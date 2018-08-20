@@ -12,7 +12,6 @@ import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
 import StoriesComponent from './components/stories_component';
 import HabitTrackerComponent from './components/habit_tracker_component';
-import { getAllHabits } from './actions';
 
 
 const middleware = [ thunk ];
