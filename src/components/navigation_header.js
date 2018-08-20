@@ -7,6 +7,14 @@ class NavigationHeader extends Component {
   render() {
     const {Header} = Layout;
     const {pathname} = this.props.location;
+
+    let rootPath = pathname.split('/')[1];
+    if(rootPath && rootPath === 'story') {
+      rootPath = '/';
+    } else {
+      rootPath = pathname;
+    }
+    
     return (
         <Header className="header">
             <div className="logo"/>
@@ -14,7 +22,7 @@ class NavigationHeader extends Component {
               theme="dark"
               mode="horizontal"
               defaultSelectedKeys={['/']}
-              selectedKeys={[pathname]}
+              selectedKeys={[rootPath]}
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="/">

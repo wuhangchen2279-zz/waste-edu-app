@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Layout } from 'antd';
+import { Layout, Menu } from 'antd';
 import { connect } from 'react-redux';
 import { getAllStories } from '../actions';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 class StoriesSideBar extends Component {
@@ -11,11 +12,14 @@ class StoriesSideBar extends Component {
     }
 
     renderStories() {
-        return _.map(this.props.stories, story => {
+        
+        return _.map(this.props.stories, (story, index) => {
             return (
-                <li key={story.id}>
-                    {story.title}
-                </li>
+                <Menu.Item key={index}>
+                    <Link to={`/story/${story.id}`}>
+                        {story.title}
+                    </Link>
+                </Menu.Item>
             );
         });
     }
@@ -26,9 +30,13 @@ class StoriesSideBar extends Component {
             <Sider 
                 width={200} 
                 style={{overflow: 'auto', height: 'calc(100vh - 64px)', left: 0, background: '#fff'}}>
-                <ul>
+                <Menu
+                    mode="inline"
+                    defaultSelectedKeys={['1']}
+                    style={{ height: '100%', borderRight: 0}}
+                >
                     {this.renderStories()}
-                </ul>
+                </Menu>
             </Sider>
         );
     }

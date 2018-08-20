@@ -1,4 +1,4 @@
-import { RECEIVE_STORIES } from '../constants/action_types';
+import { RECEIVE_STORIES, RECEIVE_STORY } from '../constants/action_types';
 
 const byId = (state = {}, action) => {
     switch(action.type) {
@@ -10,6 +10,11 @@ const byId = (state = {}, action) => {
                     return obj;
                 }, {})
             };
+        case RECEIVE_STORY:
+            return {
+                ...state,
+                [action.story.id]: action.story
+            }
         default:
             return state;
     }

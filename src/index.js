@@ -12,6 +12,7 @@ import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
 import StoriesComponent from './components/stories_component';
 import HabitTrackerComponent from './components/habit_tracker_component';
+import { getStory } from './actions';
 
 
 const middleware = [ thunk ];
@@ -21,14 +22,16 @@ const store = createStore(
     applyMiddleware(...middleware)
 )
 
+store.dispatch(getStory(1));
+
 ReactDOM.render(
     <Provider store={store}>
-
           <BrowserRouter>
             <Layout>
                 <NavigationHeader />
                 <Switch>
                     <Route path="/habit-tracker" component={HabitTrackerComponent} />
+                    <Route path="/story/:id" component={StoriesComponent} />
                     <Route path="/" component={StoriesComponent} />
                 </Switch>
             </Layout>
