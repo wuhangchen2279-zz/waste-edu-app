@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import { Layout } from 'antd';
 import {connect} from 'react-redux';
-import {getStory} from '../actions';
 import { withRouter } from 'react-router';
 
 class StoryDetail extends Component {
 
     componentDidMount() {
         const {id} = this.props.match.params;
-        if(id) {
-            this.props.getStory(id);
-        } 
     }
 
     render() {
@@ -30,10 +26,12 @@ class StoryDetail extends Component {
 }
 
 const mapStateToProps = ({stories}, ownProps) => {
-    return { story: stories[ownProps.match.params.id]}
+    const {id} = ownProps.match.params;
+    const selectedStoryIdx = id? id: Object.keys(stories)[0] 
+    return { story: stories[selectedStoryIdx]}
 }
 
 export default withRouter(connect(
     mapStateToProps,
-    {getStory}
+    null
 )(StoryDetail));

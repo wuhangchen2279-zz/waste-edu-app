@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getAllStories } from '../actions';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import {withRouter} from 'react-router';
 
 class StoriesSideBar extends Component {
 
@@ -13,9 +14,9 @@ class StoriesSideBar extends Component {
 
     renderStories() {
         
-        return _.map(this.props.stories, (story, index) => {
+        return _.map(this.props.stories, (story) => {
             return (
-                <Menu.Item key={index}>
+                <Menu.Item key={story.id}>
                     <Link to={`/story/${story.id}`}>
                         {story.title}
                     </Link>
@@ -26,13 +27,15 @@ class StoriesSideBar extends Component {
 
     render() {
         const {Sider} = Layout;
+        const {id} = this.props.match.params;
+        const menuSelectedKeys = id? id: Object.keys(this.props.stories)[0];
         return (
             <Sider 
                 width={200} 
                 style={{overflow: 'auto', height: 'calc(100vh - 64px)', left: 0, background: '#fff'}}>
                 <Menu
                     mode="inline"
-                    defaultSelectedKeys={['1']}
+                    selectedKeys={[menuSelectedKeys]}
                     style={{ height: '100%', borderRight: 0}}
                 >
                     {this.renderStories()}
@@ -46,7 +49,9 @@ const mapStateToProps = (state) => {
     return { stories: state.stories }
 }
 
-export default connect(
-    mapStateToProps, 
-    { getAllStories }
-)(StoriesSideBar);
+export default withRouter(
+    connect(
+        mapStateToProps, 
+        { getAllStories }
+    )(StoriesSideBar)
+);

@@ -12,7 +12,6 @@ import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
 import StoriesComponent from './components/stories_component';
 import HabitTrackerComponent from './components/habit_tracker_component';
-import { getStory } from './actions';
 
 
 const middleware = [ thunk ];
@@ -21,8 +20,6 @@ const store = createStore(
     reducer,
     applyMiddleware(...middleware)
 )
-
-store.dispatch(getStory(1));
 
 ReactDOM.render(
     <Provider store={store}>
