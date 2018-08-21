@@ -2,6 +2,7 @@
     {
         "id": 1, 
         "title": "Story 1",
+        "description": "Do you know story 1?",
         "habits": [
             {
                 "id": 1,
@@ -16,6 +17,7 @@
     {
         "id": 2, 
         "title": "Story 2",
+        "description": "Do you know story 2?",
         "habits": [
             {
                 "id": 3,
@@ -30,6 +32,7 @@
     {
         "id": 3, 
         "title": "Story 3",
+        "description": "Do you know story 3?",
         "habits": [
             {
                 "id": 5,

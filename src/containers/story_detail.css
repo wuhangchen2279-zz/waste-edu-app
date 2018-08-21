@@ -6,4 +6,29 @@
 
 .story-info {
     height: 40%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.story-desc {
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.story-interaction {
+    display: flex;
+    height: calc(100% - 41px);
+}
+
+.story-input {
+    width: 50%;
+}
+
+.story-output {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
 }
