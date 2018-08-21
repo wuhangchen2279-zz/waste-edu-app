@@ -1,0 +1,9 @@
+.story-container {
+    margin: 20px;
+    height: calc(100vh - 104px);
+    background-color:#fff;
+}
+
+.story-info {
+    height: 40%;
+}
