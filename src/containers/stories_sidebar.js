@@ -32,7 +32,7 @@ class StoriesSideBar extends Component {
         return (
             <Sider 
                 width={200} 
-                style={{overflow: 'auto', height: 'calc(100vh - 64px)', left: 0, background: '#fff'}}>
+                style={{overflow: 'auto', left: 0, background: '#fff'}}>
                 <Menu
                     mode="inline"
                     selectedKeys={[menuSelectedKeys]}
