@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
 import { FILE_NAME_START_POS } from '../constants/static_types'
 import './story_detail.css'
+import StoryDropBin from '../components/story_drop_bin';
+import StoryInputItem from '../components/story_input_item';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 
 class StoryDetail extends Component {
 
@@ -39,9 +43,7 @@ class StoryDetail extends Component {
     renderStoryInputItems() {
         return this.state.inputFiles[this.props.story.id].map((file) => {
             return (
-                <li key={file}>
-                    <img width="70px" src={require(`../static/story_input/${file}`)} />
-                </li>
+                <StoryInputItem key={file} item={require(`../static/story_input/${file}`)} />
             );
         })
     }
@@ -50,14 +52,10 @@ class StoryDetail extends Component {
 
         const {Content} = Layout;
         const {story} = this.props;
-        const {inputFiles, outputFiles } = this.state;
 
         if(!story) {
             return <div>Loading</div>
         }
-
-        console.log(inputFiles);
-        console.log(outputFiles);
         
         return(
             <Content style={{height: 'calc(100vh - 64px)'}}>
@@ -71,12 +69,11 @@ class StoryDetail extends Component {
                         <div className="story-interaction">
                             <div className="story-input">
                                 <div className="input-top">
-                                    <img width="120px" alt="rubbish bin" src={require(`../static/story_input/rubbish_bin.png`)} />
+                                    <StoryDropBin />
                                 </div>
                                 <div className="input-bottom">
                                     <ul className='input-list-container'>
                                         {this.renderStoryInputItems()}
-                                        <li><img width="80px" src={require('../static/story_input/1_inputItem_0.png')} alt="input item" /></li>
                                     </ul>
                                 </div>
                             </div>
@@ -98,6 +95,8 @@ const mapStateToProps = ({stories}, ownProps) => {
     return { story: stories[selectedStoryIdx]}
 }
 
+
+StoryDetail = DragDropContext(HTML5Backend)(StoryDetail);
 export default withRouter(connect(
     mapStateToProps,
     null
