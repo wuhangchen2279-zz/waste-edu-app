@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Layout } from 'antd';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
+import { FILE_NAME_START_POS } from '../constants/static_types'
 import './story_detail.css'
 
 class StoryDetail extends Component {
@@ -16,9 +17,11 @@ class StoryDetail extends Component {
         const {id} = this.props.match.params;
         var req = require.context('../static/story_output/', false, /.*\.png$/)
         const inputFiles = req.keys().reduce((obj, itm) => {
-            // obj[] = itm;
+            const fileName = itm.substring(FILE_NAME_START_POS);
+            obj[fileName.split('_')[0]] = fileName;
+            return obj;
         }, {})
-        console.log(req.keys());
+        console.log(inputFiles);
     }
 
     render() {
@@ -44,7 +47,7 @@ class StoryDetail extends Component {
 
                             </div>
                             <div className="story-output">
-                                <img width="160px" src={require('../static/story_output/1_outputItem_0.png')} />
+                                <img width="160px" src={require(`../static/story_output/${story.id}_outputItem_0.png`)} />
                             </div>
                         </div>
                     </div>
