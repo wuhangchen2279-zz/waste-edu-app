@@ -6,9 +6,18 @@ import './story_detail.css'
 
 class StoryDetail extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {inputFiles: {}, outputFiles: {}};
+    } 
+
     componentDidMount() {
         const {id} = this.props.match.params;
         var req = require.context('../static/story_output/', false, /.*\.png$/)
+        const inputFiles = req.keys().reduce((obj, itm) => {
+            // obj[] = itm;
+        }, {})
         console.log(req.keys());
     }
 
@@ -26,7 +35,7 @@ class StoryDetail extends Component {
                     
                     <div 
                         className="story-info" 
-                        style={{backgroundImage: `url(${require(`../static/story_bg/Story${story.id}_bg.png`)})`}}>
+                        style={{backgroundImage: `url(${require(`../static/story_bg/${story.id}_bg.png`)})`}}>
                         <div className="story-desc">
                             {story.description}
                         </div>
@@ -35,7 +44,7 @@ class StoryDetail extends Component {
 
                             </div>
                             <div className="story-output">
-                                <img width="160px" src={require('../static/story_output/Story1_outputItem_0.png')} />
+                                <img width="160px" src={require('../static/story_output/1_outputItem_0.png')} />
                             </div>
                         </div>
                     </div>
