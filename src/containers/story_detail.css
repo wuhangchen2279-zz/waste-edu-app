@@ -24,6 +24,29 @@
 
 .story-input {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-top {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-bottom {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-list-container {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding: 10px;
 }
 
 .story-output {
