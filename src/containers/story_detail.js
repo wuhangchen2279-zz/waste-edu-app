@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Layout } from 'antd';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
+import _ from 'lodash';
 import { FILE_NAME_START_POS } from '../constants/static_types'
 import './story_detail.css'
 
@@ -14,23 +15,44 @@ class StoryDetail extends Component {
     } 
 
     componentDidMount() {
-        const {id} = this.props.match.params;
-        var req = require.context('../static/story_output/', false, /.*\.png$/)
-        const inputFiles = req.keys().reduce((obj, itm) => {
+        const inputFiles = this._getStaticImgFiles(require.context('../static/story_input', false, /.*\.png$/));
+        const outputFiles = this._getStaticImgFiles(require.context('../static/story_output', false, /.*\.png$/));
+        this.setState({
+            inputFiles
+        });
+        this.setState({
+            outputFiles
+        });
+    }
+
+    componentWillMount() {
+        
+        
+    }
+
+    _getStaticImgFiles(req) {
+        return req.keys().reduce((obj, itm) => {
             const fileName = itm.substring(FILE_NAME_START_POS);
-            obj[fileName.split('_')[0]] = fileName;
+            const id = fileName.split('_')[0];
+            if(!obj[id]) {
+                obj[id] = [];
+            } 
+            obj[id].push(fileName);
             return obj;
-        }, {})
-        console.log(inputFiles);
+        }, {});
     }
 
     render() {
+
         const {Content} = Layout;
         const {story} = this.props;
+        const {inputFiles, outputFiles } = this.state;
 
         if(!story) {
             return <div>Loading</div>
         }
+
+        console.log(inputFiles);
         
         return(
             <Content style={{height: 'calc(100vh - 64px)'}}>
