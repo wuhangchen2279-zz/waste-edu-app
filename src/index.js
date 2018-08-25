@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
@@ -7,6 +8,8 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faKey, faAddressBook, faBookReader,faHome,faTasks,faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
@@ -20,6 +23,14 @@ const store = createStore(
     reducer,
     applyMiddleware(...middleware)
 )
+
+library.add(
+    faEnvelope, 
+    faKey, 
+    faBookReader,
+    faHome,
+    faTasks,
+    faChevronCircleUp);
 
 ReactDOM.render(
     <Provider store={store}>
