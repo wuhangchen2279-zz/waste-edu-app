@@ -9,14 +9,14 @@ import reducer from './reducers'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faKey, faAddressBook, faBookReader,faHome,faTasks,faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faBookReader,faHome,faTasks,faUsers } from '@fortawesome/free-solid-svg-icons';
 
 import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
 import StoriesComponent from './components/stories_component';
 import HabitTrackerComponent from './components/habit_tracker_component';
-
-
+import Home from './components/home';
+import About from './components/about';
 const middleware = [ thunk ];
 
 const store = createStore(
@@ -25,12 +25,11 @@ const store = createStore(
 )
 
 library.add(
-    faEnvelope, 
     faKey, 
     faBookReader,
     faHome,
     faTasks,
-    faChevronCircleUp);
+    faUsers);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -40,7 +39,9 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/habit-tracker" component={HabitTrackerComponent} />
                     <Route path="/story/:id" component={StoriesComponent} />
-                    <Route path="/" component={StoriesComponent} />
+                    <Route path="/about" component={About} />
+                    <Route path="/" component={Home} />
+                    
                 </Switch>
             </Layout>
           </BrowserRouter>
