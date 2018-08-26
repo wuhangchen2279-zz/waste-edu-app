@@ -204,6 +204,7 @@ header.masthead h2 {
   position: relative;
   display: block;
   max-width: 25rem;
+  cursor: pointer;
   margin-bottom: 15px;
 }
 
@@ -388,6 +389,14 @@ a:focus, a:hover, a:active {
   width: 1em;
 }
 
+.story-image {
+  cursor: pointer;
+}
+
+.story-row {
+  display: flex;
+  justify-content: center;
+}
 
 /* body {
   margin: 0;

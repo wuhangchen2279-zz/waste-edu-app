@@ -3,44 +3,59 @@
         "id": 1, 
         "title": "Story 1",
         "description": "Do you know story 1?",
+        "storyInputs": [
+            "1_input0.svg",
+            "1_input1.svg",
+            "1_input2.svg"
+        ],
         "habits": [
             {
                 "id": 1,
-                "title": "habit 1"
+                "title": "habit 1",
+                "animationImg": [
+                    "1_plastic0.svg",
+                    "1_plastic1.svg"
+                ],
+                "goodHabitImg": [
+                    "1_good.png"
+                ],
+                "badHabitImg": [
+                    "1_bad.png",
+                    "2_bad.png",
+                    "3_bad.png"
+                ]
             },
             {
                 "id": 2,
-                "title": "habit 2"
+                "title": "habit 2",
+                "animationImg": [
+                    "1_plastic0.svg",
+                    "1_plastic1.svg"
+                ],
+                "goodHabitImg": [
+                    "1_good.png"
+                ],
+                "badHabitImg": [
+                    "1_bad.png",
+                    "2_bad.png",
+                    "3_bad.png"
+                ]
             },
             {
                 "id": 3,
-                "title": "habit 3"
-            }
-        ]
-    },
-    {
-        "id": 2, 
-        "title": "Story 2",
-        "description": "Do you know story 2?",
-        "habits": [
-            {
-                "id": 4,
-                "title": "habit 4"
-            }
-        ]
-    },
-    {
-        "id": 3, 
-        "title": "Story 3",
-        "description": "Do you know story 3?",
-        "habits": [
-            {
-                "id": 5,
-                "title": "habit 5"
-            },
-            {
-                "id": 6,
-                "title": "habit 6"
+                "title": "habit 3",
+                "animationImg": [
+                    "1_plastic0.svg",
+                    "1_plastic1.svg"
+                ],
+                "goodHabitImg": [
+                    "1_good.png"
+                ],
+                "badHabitImg": [
+                    "1_bad.png",
+                    "2_bad.png",
+                    "3_bad.png"
+                ]
             }
         ]
     }

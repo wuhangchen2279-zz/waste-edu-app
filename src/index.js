@@ -9,12 +9,17 @@ import reducer from './reducers'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faKey, faAddressBook, faBookReader,faHome,faTasks,faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
+import 'font-awesome/css/font-awesome.min.css'
+import { faEnvelope, faKey, faBookReader,faHome,faTasks,faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
-import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
 import StoriesComponent from './components/stories_component';
 import HabitTrackerComponent from './components/habit_tracker_component';
+import StoriesGridComponent from './containers/stories_grid';
+import { getAllStories, getAllStoryInputs } from './actions/index';
+import { STORY_PLASTIC_ID } from './constants/static_types';
+import styled from 'styled-components';
+import StoryBoxComponent from './containers/story_box';
 
 
 const middleware = [ thunk ];
@@ -24,6 +29,8 @@ const store = createStore(
     applyMiddleware(...middleware)
 )
 
+store.dispatch(getAllStories());
+
 library.add(
     faEnvelope, 
     faKey, 
@@ -32,17 +39,22 @@ library.add(
     faTasks,
     faChevronCircleUp);
 
+const MainDiv = styled.div`
+    height: calc(100vh - 20px);
+`;
+
 ReactDOM.render(
     <Provider store={store}>
           <BrowserRouter>
-            <Layout>
-                <NavigationHeader />
+            <MainDiv>
+                {/* <NavigationHeader /> */}
                 <Switch>
                     <Route path="/habit-tracker" component={HabitTrackerComponent} />
-                    <Route path="/story/:id" component={StoriesComponent} />
+                    <Route path="/story/:id" component={StoryBoxComponent} />
+                    <Route path="/stories" component={StoriesGridComponent} />
                     <Route path="/" component={StoriesComponent} />
                 </Switch>
-            </Layout>
+            </MainDiv>
           </BrowserRouter>
     </Provider>, 
     document.getElementById('root')

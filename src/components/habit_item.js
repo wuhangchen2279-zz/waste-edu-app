@@ -1,27 +1,45 @@
-import React from 'react';
-import LoadingPanel from './loading_panel';
+import React, {Component} from 'react';
+import styled from 'styled-components';
 
-const HabitItem = (props) => {
-    const {index, badHabit, goodHabit, habit} = props;
-    if(!habit) {
-        return <LoadingPanel />
+const HabitAnimation = styled.div`
+    height: 200px;
+    width: 200px;
+    ${props => `
+        background-image: url(${props.habitImgs});
+    `}
+`;
+
+class HabitItem extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            habitImage: props.habitsImg[0],
+            renderCounter: 0
+        };
     }
 
-    return (
-        <li className='habit-item-container'>
-            <div className="habit-title">
-                {index}. {habit.title}
-            </div>
-            <div className="habit-pics">
-                <div className="bad-habit">
-                    <img width="160px" src={require(`../static/habit_bad/${badHabit}`)} alt="bad habit"/>
-                </div>
-                <div className="good-habit">
-                    <img width="160px" src={require(`../static/habit_good/${goodHabit}`)} alt="good habit"/>
-                </div>
-            </div>
-        </li>
-    );
+    componentDidMount() {
+        const {habitsImg} = this.props;
+        if(this.props.onAnimationFinished && habitsImg) {
+            const interval = setInterval(() => {
+                this.setState({habitImage: habitsImg[this.state.renderCounter]});
+                this.setState({renderCounter: this.state.renderCounter + 1});
+                if(this.state.renderCounter > habitsImg.length - 1) {
+                    clearInterval(interval);
+                    this.props.onAnimationFinished();
+                }
+            }, 1000);
+        }
+    }
+
+    render() {
+        return (
+            <HabitAnimation 
+                habitImgs={this.state.habitImage}
+            />
+        );
+    }
 }
 
 export default HabitItem;
