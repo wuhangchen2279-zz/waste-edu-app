@@ -54,6 +54,7 @@ class StoryBoxComponent extends Component {
 
     handleOk(e) {
         this.setState({showModal: false});
+        this.props.history.push('/habit-tracker');
     }
 
     handleCancel(e) {
@@ -91,6 +92,7 @@ class StoryBoxComponent extends Component {
                     maskClosable={false}
                     title="Basic Modal"
                     visible={this.state.showModal}
+                    cancelText=""
                     onOk={this.handleOk.bind(this)}
                     onCancel={this.handleCancel.bind(this)}
                 >

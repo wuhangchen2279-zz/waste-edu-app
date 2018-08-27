@@ -2,29 +2,34 @@ import React, { Component , PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { getAllHabits } from '../actions';
 import { Carousel } from 'antd';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 class HabitTrackerDetail extends Component {
-
-    // componentDidMount() {
-    //     this.props.getAllHabits();
-    // }
+    
+    downloadPdf() {
+        const input = document.getElementById('imgToPrint');
+        html2canvas(input)
+        .then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF({
+                orientation: 'landscape'
+            });
+            pdf.addImage(imgData, 'JPEG', 0, 0);
+            // pdf.output('dataurlnewwindow');
+            pdf.save("habit_tracker.pdf");
+        })
+        ;
+    }
 
      render() {
-    //     const { Content } = Layout;
-    //     console.log(this.props.habits);
-    //     return (
-    //         <Content>
-    //             habit 
-    //         </Content>
-    //     );
-    // }
-
+    
         return (
                 <header className="masthead bg-primary text-white text-center">
                     <div className="container"> 
                         
-                        <img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
-                        <button className="btn btn-primary btn-xl font-weight-light mb-1">Download Here!</button>
+                        <img id="imgToPrint" className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
+                        <button onClick={this.downloadPdf} className="btn btn-primary btn-xl font-weight-light mb-1">Download Here!</button>
                         <br/><br/>
                         <h2 className="text-uppercase mb-0">This is how poeple use it!</h2>
                         <br/><br/>
@@ -40,20 +45,6 @@ class HabitTrackerDetail extends Component {
             
             );
 
-        /* {<li className='habit-item-container'>
-            <div className="habit-title">
-                {index}. {habit.title}
-            </div>
-            <div className="habit-pics">
-                <div className="bad-habit">
-                    <img width="160px" src={require(`../static/habit_bad/${badHabit}`)} alt="bad habit"/>
-                </div>
-                <div className="good-habit">
-                    <img width="160px" src={require(`../static/habit_good/${goodHabit}`)} alt="good habit"/>
-                </div>
-            </div>
-        </li> }*/
-    
     }
 };
 
