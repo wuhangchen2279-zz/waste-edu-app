@@ -9,7 +9,7 @@ import reducer from './reducers'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faKey, faBookReader,faHome,faTasks,faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faBookReader,faHome,faTasks,faUsers  } from '@fortawesome/free-solid-svg-icons';
 
 import { Layout } from 'antd';
 import NavigationHeader from './components/navigation_header';
@@ -39,7 +39,7 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/habit-tracker" component={HabitTrackerComponent} />
                     <Route path="/story/:id" component={StoriesComponent} />
-                    <Route path="/about" component={About} />
+                    {/* <Route path="/about" component={About} /> */}
                     <Route path="/" component={Home} />
                     
                 </Switch>

@@ -48,17 +48,19 @@ class NavigationHeader extends Component {
               </li>
 
               <li className="nav-item mx-0 mx-lg-1">
-                 <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#tracker">
-                  <div className="flex-container">
-                    <div className="flex-item">
-                      <span style={{backgroundColor: '#b5d56a', borderRadius: '20px',padding:'10px'}}><FontAwesomeIcon icon="tasks" /></span>
-                    </div>
-                    < div className="flex-item">Track</div>
-                  </div>
-                </a>
+                <Link to="/habit-tracker">
+                    <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#tracker" >
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <span style={{backgroundColor: '#b5d56a', borderRadius: '20px',padding:'10px'}}><FontAwesomeIcon icon="tasks" /></span>
+                        </div>
+                        < div className="flex-item">Track</div>
+                      </div>
+                    </a>
+                </Link>
               </li>
 
-              <li className="nav-item mx-0 mx-lg-1">
+              {/* <li className="nav-item mx-0 mx-lg-1">
                  <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">
                   <div className="flex-container">
                     <div className="flex-item">
@@ -67,7 +69,7 @@ class NavigationHeader extends Component {
                     < div className="flex-item">About</div>
                   </div>
                 </a>
-              </li>
+              </li> */}
 
               {/* <li className="nav-item mx-0 mx-lg-1">
                 <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">

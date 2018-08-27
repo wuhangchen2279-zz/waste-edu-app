@@ -477,6 +477,21 @@ hr.star-dark, hr.star-light {
   font-weight: 300!important;
 }
 
+
+/* For slider */
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 20px;
+  line-height: 40px;
+  background: #45597e;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+/* slider image size */
+
 /* body {
   margin: 0;
   padding: 0;
