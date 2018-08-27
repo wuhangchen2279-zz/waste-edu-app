@@ -77,21 +77,21 @@ class StoryPlasticComponent extends Component {
 
 
     onAnimationStart() {
-        const {inputIndex} = this.props;
+        const {inputIndex, story} = this.props;
         this.setState({
             poseConfigs: {
                 ...this.state.poseConfigs,
-                [inputIndex]: 0
+                [story.habits[inputIndex].id]: 0
             }
         });
         const interval = setInterval(() => {
             this.setState({
                 poseConfigs: {
                     ...this.state.poseConfigs,
-                    [inputIndex]: this.state.poseConfigs[inputIndex] + 1
+                    [story.habits[inputIndex].id]: this.state.poseConfigs[story.habits[inputIndex].id] + 1
                 }
             });
-            if(this.state.poseConfigs[inputIndex] > 2) {
+            if(this.state.poseConfigs[story.habits[inputIndex].id] > 2) {
                 clearInterval(interval);
                 this.setState({storyOutputIdx: this.state.storyOutputIdx + 1});
                 this.props.onOneAnimationFinished()
@@ -105,14 +105,13 @@ class StoryPlasticComponent extends Component {
 
     renderAnimationItems() {
         const {inputIndex} = this.props;
-        console.log(this.state.poseConfigs);
         return this.state.selHabits.length > 0? (
-            this.state.selHabits.map((habit, index) => {
+            this.state.selHabits.map(habit => {
                 return _.map(habit.animationImg, img => {
                     return ( 
                         <AnimationItem key={inputIndex + img.file}
                             itemImg={require(`../static/story_animate/${img.file}`)}    
-                            pose={this.state.poseConfigs[index]}
+                            pose={this.state.poseConfigs[habit.id]}
                             positions={{
                                 0: {x: 0, y: 0}, 
                                 1: {x: 260, y: 150},

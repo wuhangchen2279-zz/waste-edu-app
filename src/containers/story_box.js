@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
+import { Modal } from 'antd';
 import LoadingPanel from '../components/loading_panel';
 import StoryBodyComponent from '../components/story_body';
 import StoryInputComponent from '../components/story_input';
@@ -37,7 +38,26 @@ class StoryBoxComponent extends Component {
         this.state = {
             inputIndex: null,
             isStoryPlaying: false,
+            boxKey: 0,
+            animationCounter: 0,
+            showModal: false,
         }
+    }
+
+    onAnimationFinished() {
+        this.setState({isStoryPlaying: false});
+        this.setState({animationCounter: this.state.animationCounter + 1});
+        if(this.state.animationCounter === this.props.story.storyInputs.length) {
+            this.setState({showModal: true});
+        }
+    }
+
+    handleOk(e) {
+        this.setState({showModal: false});
+    }
+
+    handleCancel(e) {
+        this.setState({showModal: false});
     }
 
     render() {
@@ -46,7 +66,7 @@ class StoryBoxComponent extends Component {
             return <LoadingPanel />
         }
         return (
-            <StoryContainer>
+            <StoryContainer key={this.state.boxKey}>
                 <StoryHeader>
                     <h5>{story.title}</h5>
                     <StoryInputComponent 
@@ -58,9 +78,20 @@ class StoryBoxComponent extends Component {
                 <StoryBodyComponent 
                     story={story} 
                     inputIndex={this.state.inputIndex}
-                    onOneAniFinished={() => this.setState({isStoryPlaying: false})}
+                    onOneAniFinished={() => this.onAnimationFinished()}
                 />
+                <Modal
+                    title="Basic Modal"
+                    visible={this.state.showModal}
+                    onOk={this.handleOk.bind(this)}
+                    onCancel={this.handleCancel.bind(this)}
+                >
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                </Modal>
             </StoryContainer>
+            
         );
     }
 }
