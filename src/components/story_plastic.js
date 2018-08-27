@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import posed from "react-pose";
 import _ from 'lodash';
 import HabitsBoxComponent from './habits_box';
+import { ANIMATION_SPEED_ITEM } from '../constants/static_types';
 
 const DetailContainer = styled.div`
     display: flex;
@@ -33,7 +34,7 @@ const AnimationItem = styled(posed.div({
        y: ({positions}) => positions[1].y, 
        rotate: 180,
        transition: {
-           duration: 1500
+           duration: ANIMATION_SPEED_ITEM
         }
     },
     2: {
@@ -41,7 +42,7 @@ const AnimationItem = styled(posed.div({
        y: ({positions}) => positions[2].y, 
        rotate: 360,
        transition: {
-           duration: 1500
+           duration: ANIMATION_SPEED_ITEM
         }
     }
 }))`

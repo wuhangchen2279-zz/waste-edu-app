@@ -57,6 +57,12 @@ class StoryBoxComponent extends Component {
     }
 
     handleCancel(e) {
+        this.setState({boxKey: this.state.boxKey + 1});
+        this.setState({
+            inputIndex: null,
+            animationCounter: 0
+        });
+        // this.setState
         this.setState({showModal: false});
     }
 

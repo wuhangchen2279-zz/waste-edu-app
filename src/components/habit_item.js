@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import { ANIMATION_SPEED_HABIT } from '../constants/static_types';
 
 const HabitAnimation = styled.div`
     height: 200px;
@@ -29,7 +30,7 @@ class HabitItem extends Component{
                     clearInterval(interval);
                     this.props.onAnimationFinished();
                 }
-            }, 1000);
+            }, ANIMATION_SPEED_HABIT);
         }
     }
 
