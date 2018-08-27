@@ -9,7 +9,11 @@ class StoryBodyComponent extends Component {
         switch(story.id) {
             case STORY_PLASTIC_ID:
                 return (
-                    <StoryPlasticComponent inputIndex={inputIndex} story={story}/>
+                    <StoryPlasticComponent 
+                        inputIndex={inputIndex} 
+                        story={story} 
+                        onOneAnimationFinished={() => this.props.onOneAniFinished()}
+                    />
                 );
             default: 
                 console.warn(`Story ${story.id} not supprted!`);

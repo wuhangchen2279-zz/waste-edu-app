@@ -42,7 +42,8 @@ class StoryBoxComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputIndex: null
+            inputIndex: null,
+            isStoryPlaying: false,
         }
     }
 
@@ -56,11 +57,16 @@ class StoryBoxComponent extends Component {
                 <StoryHeader>
                     <h5>{story.title}</h5>
                 </StoryHeader>
-                <StoryBodyComponent story={story} inputIndex={this.state.inputIndex}/>
+                <StoryBodyComponent 
+                    story={story} 
+                    inputIndex={this.state.inputIndex}
+                    onOneAniFinished={() => this.setState({isStoryPlaying: false})}
+                />
                 <StoryFooter>
                     <StoryInputComponent 
-                        onStoryInputClicked={(index) => this.setState({inputIndex: index})}
+                        onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
                         storyInputs={story.storyInputs}
+                        isStoryPlaying={this.state.isStoryPlaying}
                     />
                 </StoryFooter>
             </StoryContainer>

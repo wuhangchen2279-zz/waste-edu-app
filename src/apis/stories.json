@@ -13,8 +13,16 @@
                 "id": 1,
                 "title": "habit 1",
                 "animationImg": [
-                    "1_plastic0.svg",
-                    "1_plastic1.svg"
+                    {
+                        "file": "1_plastic0.svg",
+                        "x": 470,
+                        "y": 240
+                    },
+                    {
+                        "file": "1_plastic1.svg",
+                        "x": 470,
+                        "y": 470
+                    }
                 ],
                 "goodHabitImg": [
                     "1_good.png"
@@ -29,8 +37,16 @@
                 "id": 2,
                 "title": "habit 2",
                 "animationImg": [
-                    "1_plastic0.svg",
-                    "1_plastic1.svg"
+                    {
+                        "file": "1_plastic0.svg",
+                        "x": 460,
+                        "y": 220
+                    },
+                    {
+                        "file": "1_plastic1.svg",
+                        "x": 450,
+                        "y": 450
+                    }
                 ],
                 "goodHabitImg": [
                     "1_good.png"
@@ -45,8 +61,16 @@
                 "id": 3,
                 "title": "habit 3",
                 "animationImg": [
-                    "1_plastic0.svg",
-                    "1_plastic1.svg"
+                    {
+                        "file": "1_plastic0.svg",
+                        "x": 450,
+                        "y": 210
+                    },
+                    {
+                        "file": "1_plastic1.svg",
+                        "x": 420,
+                        "y": 420
+                    }
                 ],
                 "goodHabitImg": [
                     "1_good.png"

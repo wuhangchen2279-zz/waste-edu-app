@@ -51,77 +51,78 @@ const AnimationItem = styled(posed.div({
     background-size: contain;
     ${props => `
         background-image: url(${props.itemImg});
+        transform: 
+            ${props.pose == 3? 
+                `translateX(${props.positions[2].x}px)
+                 translateY(${props.positions[2].y}px)
+                 rotate(360deg)
+                 translateZ(0px) !important`
+                : null
+            };
     `}
 `;
 
+// transform: translateX(470px) translateY(240px) rotate(360deg) translateZ(0px);
 
 class StoryPlasticComponent extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            animationConfigs: {
-                0: {
-                    pose: 0,
-                    positions: {
-                        0: {x: 0, y: 0}, 
-                        1: {x: 260, y: 150},
-                        2: {x: 470, y: 240}
-                    }
-                },
-                1: {
-                    pose: 0,
-                    positions: {
-                        0: {x: 0, y: 0}, 
-                        1: {x: 260, y: 150},
-                        2: {x: 470, y: 470}
-                    }
-                }
-            },
-            animationCounter: 0,
-            animationStarted: {},
+            poseConfigs: {},
             storyOutputIdx: 0,
+            selHabits: []
         };
     }
 
 
     onAnimationStart() {
+        const {inputIndex} = this.props;
+        this.setState({
+            poseConfigs: {
+                ...this.state.poseConfigs,
+                [inputIndex]: 0
+            }
+        });
         const interval = setInterval(() => {
-            this.setState(prevState => {
-                const state = _.cloneDeep(prevState);
-                _.keys(state.animationConfigs).map(key => {
-                    state.animationConfigs[key].pose =  state.animationConfigs[key].pose + 1;
-                });
-                state.animationCounter = state.animationCounter + 1;
-                return state;
+            this.setState({
+                poseConfigs: {
+                    ...this.state.poseConfigs,
+                    [inputIndex]: this.state.poseConfigs[inputIndex] + 1
+                }
             });
-            if(this.state.animationCounter > 2) {
+            if(this.state.poseConfigs[inputIndex] > 2) {
                 clearInterval(interval);
                 this.setState({storyOutputIdx: this.state.storyOutputIdx + 1});
+                this.props.onOneAnimationFinished()
             }
         }, 1000);
         setTimeout(() => {
-            this.setState({animationStarted: {...this.state.animationStarted, [this.props.inputIndex]: true}});
+            const {story, inputIndex} = this.props;
+            this.setState({selHabits: [...this.state.selHabits, story.habits[inputIndex]]});
         }, 500)
     }
 
     renderAnimationItems() {
-        const {story, inputIndex} = this.props;
-        const selHabit = story.habits[inputIndex];
-        return selHabit && this.state.animationStarted[inputIndex]? (
-            selHabit.animationImg.map((img, index) => {
-                return ( 
-                    <AnimationItem key={img}
-                        itemImg={require(`../static/story_animate/${img}`)}    
-                        pose={this.state.animationConfigs[index].pose}
-                        positions={{
-                            0: {x: this.state.animationConfigs[index].positions[0].x, y: this.state.animationConfigs[index].positions[0].y}, 
-                            1: {x: this.state.animationConfigs[index].positions[1].x, y: this.state.animationConfigs[index].positions[1].y},
-                            2: {x: this.state.animationConfigs[index].positions[2].x, y: this.state.animationConfigs[index].positions[2].y}
-                        }}
-                    />
-                );
-            })
+        const {inputIndex} = this.props;
+        console.log(this.state.poseConfigs);
+        return this.state.selHabits.length > 0? (
+            this.state.selHabits.map((habit, index) => {
+                return _.map(habit.animationImg, img => {
+                    return ( 
+                        <AnimationItem key={inputIndex + img.file}
+                            itemImg={require(`../static/story_animate/${img.file}`)}    
+                            pose={this.state.poseConfigs[index]}
+                            positions={{
+                                0: {x: 0, y: 0}, 
+                                1: {x: 260, y: 150},
+                                2: {x: img.x, y: img.y}
+                            }}
+                        />
+                    );
+                })
+            }) 
+            
         ): null;
     }
 
@@ -139,7 +140,11 @@ class StoryPlasticComponent extends Component {
                 </HabitContainer>
                 <AnimationComponent>
                     {this.renderAnimationItems()}
-                    <img style={{marginTop: '200px'}} src={require(`../static/story_output/${story.id}_outputItem_${this.state.storyOutputIdx}.png`)} alt="story output" />
+                    <img 
+                        style={{marginTop: '200px'}} 
+                        src={require(`../static/story_output/${story.id}_outputItem_${this.state.storyOutputIdx}.png`)} 
+                        alt="story output" 
+                    />
                 </AnimationComponent>
             </DetailContainer>
         );

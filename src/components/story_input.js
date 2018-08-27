@@ -24,7 +24,6 @@ class StoryInputComponent extends Component {
         super(props);
         this.state = {
             clicked: {},
-            isStoryPlaying: false
         }
     }
 
@@ -32,9 +31,6 @@ class StoryInputComponent extends Component {
         this.setState({clicked: {...this.state.clicked, [index]: true}});
         this.setState({isStoryPlaying: true});
         this.props.onStoryInputClicked(index);
-        setTimeout(() => {
-            this.setState({isStoryPlaying: false});
-        }, 7000)
     }
 
 
@@ -49,7 +45,7 @@ class StoryInputComponent extends Component {
                             index={index}
                             onClick={() => this.onInputClicked(index)}
                             clicked={this.state.clicked[index]}
-                            storyPlaying={this.state.isStoryPlaying}
+                            storyPlaying={this.props.isStoryPlaying}
                             imgOpacity={this.state.clicked[index]? '0.5': '1'}
                             inputBg={require(`../static/story_input/${input}`)}/>
                     );
