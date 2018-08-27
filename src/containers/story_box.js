@@ -8,7 +8,7 @@ import StoryBodyComponent from '../components/story_body';
 import StoryInputComponent from '../components/story_input';
 
 const StoryContainer = styled.div`
-    margin: 10px auto;
+    margin: 120px auto 10px auto;
     height: 960px;
     width: 1163px;
     border: 3px solid #18bc9c;
@@ -87,14 +87,14 @@ class StoryBoxComponent extends Component {
                     onOneAniFinished={() => this.onAnimationFinished()}
                 />
                 <Modal
+                    centered
+                    maskClosable={false}
                     title="Basic Modal"
                     visible={this.state.showModal}
                     onOk={this.handleOk.bind(this)}
                     onCancel={this.handleCancel.bind(this)}
                 >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+                    <p>Pictures goes here</p>
                 </Modal>
             </StoryContainer>
             

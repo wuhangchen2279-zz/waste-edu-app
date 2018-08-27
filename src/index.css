@@ -117,7 +117,8 @@ section h2 {
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-  color: #18BC9C;
+  /* color: #18BC9C; */
+  color: white;
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
@@ -197,6 +198,7 @@ header.masthead h2 {
 }
 
 .portfolio {
+  margin-top: 100px;
   margin-bottom: -15px;
 }
 
@@ -339,7 +341,8 @@ a {
 }
 
 a:focus, a:hover, a:active {
-  color: #128f76;
+   color: #128f76;
+  /* color: white; */
 }
 
 .btn {
@@ -363,7 +366,7 @@ a:focus, a:hover, a:active {
 }
 
 .btn-primary {
-  background-color: #18BC9C;
+  background-color: yellowgreen;
   border-color: #18BC9C;
 }
 
@@ -382,11 +385,57 @@ a:focus, a:hover, a:active {
   border-color: #1a252f;
 }
 
-.fa-chevron-circle-up {
-  background: yellow;
-  border-radius: 50%;
-  height: 1em;
-  width: 1em;
+
+
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: column nowrap;
+  
+  /* Then we define how is distributed the remaining space */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.flex-item {
+  position: relative;
+  /* padding: 5px; */
+  width: 60px;
+  /* height: 20px; */
+  margin-top: 5px;
+
+  /* line-height: 150px; */
+  text-align: center;
+  
+}
+
+@media (min-width: 992px){
+  header.masthead {
+      padding-top: calc(6rem + 106px);
+      padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 992px){
+  #mainNav.navbar-shrink {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+  }
+}
+
+.bg-primary {
+  background-color: #18bc9c!important;
+}
+
+.text-white {
+  color: #fff!important;
 }
 
 .story-image {
@@ -397,6 +446,62 @@ a:focus, a:hover, a:active {
   display: flex;
   justify-content: center;
 }
+
+.text-center {
+  text-align: center!important;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.d-block {
+  display: block!important;
+}
+
+.mr-auto, .mx-auto {
+  margin-right: auto!important;
+}
+
+.text-uppercase {
+  text-transform: uppercase!important;
+}
+
+.mb-0, .my-0 {
+  margin-bottom: 0!important;
+}
+
+hr.star-dark, hr.star-light {
+  max-width: 15rem;
+  padding: 0;
+  text-align: center;
+  border: none;
+  border-top: solid .25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.font-weight-light {
+  font-weight: 300!important;
+}
+
+
+/* For slider */
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 20px;
+  line-height: 40px;
+  background: #45597e;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+/* slider image size */
 
 /* body {
   margin: 0;
