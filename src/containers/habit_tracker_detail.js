@@ -1,9 +1,7 @@
 import React, { Component , PropTypes} from 'react';
 import {connect} from 'react-redux';
-import { Layout } from 'antd';
 import { getAllHabits } from '../actions';
 import { Carousel } from 'antd';
-import {PdfExport} from '../components/habit_pdf';
 
 class HabitTrackerDetail extends Component {
 
