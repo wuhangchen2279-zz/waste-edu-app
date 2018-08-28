@@ -10,10 +10,10 @@ const HabitRowItem = (props) => {
             </div>
             <div className="habit-pics">
                 <div className="bad-habit">
-                    <img width="160px" src={require(`../static/habit_bad/${habit.badHabitImg[0]}`)} alt="bad habit"/>
+                    <img width="160px" src={require(`../static/tracker_bad/${habit.id}_sad.png`)} alt="bad habit"/>
                 </div>
                 <div className="good-habit">
-                    <img width="160px" src={require(`../static/habit_good/${habit.goodHabitImg[0]}`)} alt="good habit"/>
+                    <img width="160px" src={require(`../static/tracker_good/${habit.id}_happy.png`)} alt="good habit"/>
                 </div>
             </div>
         </div>
