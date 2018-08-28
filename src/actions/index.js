@@ -1,5 +1,6 @@
 import StoriesAPI from '../apis/stories_api';
 import * as types from '../constants/action_types';
+import {storiesRef} from '../config/firebase';
 
 const receiveStories = stories => ({
     type: types.RECEIVE_STORIES,
@@ -7,8 +8,8 @@ const receiveStories = stories => ({
 });
 
 export const getAllStories = () => dispatch => {
-    StoriesAPI.getStroies(stories => {
-        dispatch(receiveStories(stories))
+    storiesRef.on("value", snapshot => {
+        dispatch(receiveStories(snapshot.val()));
     })
 }
 
