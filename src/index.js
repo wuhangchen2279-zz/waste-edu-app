@@ -15,7 +15,7 @@ import { faKey, faBookReader,faHome,faTasks,faUsers  } from '@fortawesome/free-s
 import NavigationHeader from './components/navigation_header';
 import HabitTrackerComponent from './components/habit_tracker_component';
 import StoriesGridComponent from './containers/stories_grid';
-import { getAllStories} from './actions/index';
+import { getAllStories, getAllHabits} from './actions/index';
 import styled from 'styled-components';
 import StoryBoxComponent from './containers/story_box';
 import Home from './components/home';
@@ -31,6 +31,7 @@ const store = createStore(
 )
 
 store.dispatch(getAllStories());
+store.dispatch(getAllHabits());
 
 WebFont.load({
     google: {
