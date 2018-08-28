@@ -17,8 +17,8 @@ class NavigationHeader extends Component {
 
     return (
       <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <div>
-          <img className="logo" src={require('../static/habit_bad/turtle_logo.png')} alt="" />
+        <div className="logo">
+          Zero-Waste Challenge
         </div>
         <Menu
           theme="dark"

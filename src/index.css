@@ -506,13 +506,20 @@ hr.star-dark, hr.star-light {
   display: flex;
   justify-content: center;
 }
+.ant-modal-title {
+  display: flex;
+  justify-content: center;
+  color:#128f76 !important;
+}
 
 .logo {
-  width: 50px;
-  height: 31px;
-  background: rgba(255,255,255,.2);
-  margin: 16px 24px 16px 0;
+  width: 200px;
+  height: 20px;
+  /* background: rgba(255,255,255,.2); */
+  /* margin: 16px 24px 16px 0; */
   float: left;
+  color:#fff;
+  
 }
 
 .ant-menu-item-active {

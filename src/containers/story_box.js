@@ -90,7 +90,7 @@ class StoryBoxComponent extends Component {
                 <Modal
                     centered
                     maskClosable={false}
-                    title="Can You Please Help Me?"
+                    title="Turtle: I am dying. Can you please help me?"
                     visible={this.state.showModal}
                     footer={[
                         <Button key="submit" type="primary" onClick={this.handleOk.bind(this)}>
@@ -99,7 +99,7 @@ class StoryBoxComponent extends Component {
                     ]}
                     onCancel={this.handleCancel.bind(this)}
                 >
-                    <p>Pictures goes here</p>
+                    <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require('../static/story_end/Story1_Ending_sad.png')}></img></p>
                 </Modal>
             </StoryContainer>
             
