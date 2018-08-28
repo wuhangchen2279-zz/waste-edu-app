@@ -25,12 +25,14 @@
                     }
                 ],
                 "goodHabitImg": [
-                    "1_good.png"
+                    "ZeroWasteAni_01_1.svg",
+                    "ZeroWasteAni_01_2.svg",
+                    "ZeroWasteAni_01_3.svg"
                 ],
                 "badHabitImg": [
-                    "1_bad.png",
-                    "2_bad.png",
-                    "3_bad.png"
+                    "WasteAni_01_1.svg",
+                    "WasteAni_01_2.svg",
+                    "WasteAni_01_3.svg"
                 ]
             },
             {
@@ -49,12 +51,14 @@
                     }
                 ],
                 "goodHabitImg": [
-                    "1_good.png"
+                    "ZeroWasteAni_01_1.svg",
+                    "ZeroWasteAni_01_2.svg",
+                    "ZeroWasteAni_01_3.svg"
                 ],
                 "badHabitImg": [
-                    "1_bad.png",
-                    "2_bad.png",
-                    "3_bad.png"
+                    "WasteAni_01_1.svg",
+                    "WasteAni_01_2.svg",
+                    "WasteAni_01_3.svg"
                 ]
             },
             {
