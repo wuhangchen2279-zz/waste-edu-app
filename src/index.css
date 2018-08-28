@@ -526,6 +526,15 @@ hr.star-dark, hr.star-light {
 .ant-menu-item-selected {
   background-color: #18bc9c !important;
 }
+
+
+/* slider */
+.slider {
+  width: 100px;
+  height: 100px;
+}
+
+
 /* slider image size */
 
 /* body {

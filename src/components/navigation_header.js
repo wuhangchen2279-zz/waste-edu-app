@@ -20,7 +20,7 @@ class NavigationHeader extends Component {
             <NavMenuItem routeUrl="/" icon="home" label="Home" iconColor="#f0c24b" />
           </Menu.Item>
           <Menu.Item key="2">
-            <NavMenuItem routeUrl="/stories" icon="book-reader" label="Stroies" iconColor="#ea7066"/>
+            <NavMenuItem routeUrl="/stories" icon="book-reader" label="Stroy" iconColor="#ea7066"/>
           </Menu.Item>
           <Menu.Item key="3">
             <NavMenuItem routeUrl="/habit-tracker" icon="tasks" label="Tracker" iconColor="#a597e7"/>

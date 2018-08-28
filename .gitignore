@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+#firebase
+/.firebase
+
 # testing
 /coverage
 
