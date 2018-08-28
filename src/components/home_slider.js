@@ -48,8 +48,8 @@ class HomeSliders extends React.Component {
         return (
           <div style={{margin: "5rem auto"}}>
           <h2 className="mb-4">
-            <p>Dear angel, do you know every year more than 130,000 tonnes of plastics end up in the ocean and cause marine animals die?</p>
-            <p>Would you be willing to take actions to save their lives...</p></h2>
+            <p>Little angel, do you know every year more than 130,000 tonnes of plastics end up in the ocean and cause marine animals die?</p>
+            <p>Would you be willing to take actions to save their lives?</p></h2>
             <img src={ this.backgrounds[this.state.backgroundIndex] } />
             <div style={{
               position: "relative",
