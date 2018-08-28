@@ -1,5 +1,6 @@
-import StoriesAPI from '../apis/stories_api';
 import * as types from '../constants/action_types';
+import {storiesRef} from '../config/firebase';
+import _ from 'lodash';
 
 const receiveStories = stories => ({
     type: types.RECEIVE_STORIES,
@@ -7,8 +8,8 @@ const receiveStories = stories => ({
 });
 
 export const getAllStories = () => dispatch => {
-    StoriesAPI.getStroies(stories => {
-        dispatch(receiveStories(stories))
+    storiesRef.on("value", snapshot => {
+        dispatch(receiveStories(snapshot.val()));
     })
 }
 
@@ -18,7 +19,7 @@ const receiveHabits = habits => ({
 });
 
 export const getAllHabits = () => dispatch => {
-    StoriesAPI.getStroies(stories => {
-        dispatch(receiveHabits(stories.map(story => story.habits)))
+    storiesRef.on("value", snapshot => {
+        dispatch(receiveHabits(_.map(snapshot.val(), story => story.habits)));
     })
 }

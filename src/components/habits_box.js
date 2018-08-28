@@ -21,6 +21,7 @@ const HabitsBoxComponent = (props) => {
             />
             <HabitItem 
                 key={`good${habitRef}`} 
+                onAnimationFinished={() => props.onHabitRendered()}
                 habitsImg={goodHabitImg.map(img => {
                     return require(`../static/habit_good/${img}`);
                 })}
