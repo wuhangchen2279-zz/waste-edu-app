@@ -46,20 +46,26 @@ class HomeSliders extends React.Component {
     
       render () {
         return (
-          <div style={{margin: "3rem auto"}}>
+          <div style={{margin: "5rem auto"}}>
+          <h2 className="mb-4">
+            <p>Dear angel, do you know every year more than 130,000 tonnes of plastics end up in the ocean and cause marine animals die?</p>
+            <p>Would you be willing to take actions to save their lives...</p></h2>
             <img src={ this.backgrounds[this.state.backgroundIndex] } />
             <div style={{
               position: "relative",
               bottom: "478px"
             }}>
-              <h1 className="text-uppercase mb-0">Fight Waste for Animals</h1>
+              {/* <h2 className="mb-0">Fight Waste for Animals !</h2> */}
               {/* <hr className="star-light"/> */}
                 <Link to="/stories" 
-                    className="btn btn-primary btn-xl font-weight-light mb-1 mt-3">
+                    style={{width: '200px', marginTop: '213px'}}
+                    className="btn btn-primary btn-xl font-weight-light mb-1">
                     Read Story Now!
                 </Link>
             </div>
+            
           </div>
+          
         )
       }
     }
