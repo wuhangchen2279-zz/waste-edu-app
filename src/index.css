@@ -1,6 +1,6 @@
-body {
+/* body {
   font-family: 'Lato';
-}
+} */
 
 h1,
 h2,
@@ -9,7 +9,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  font-family: 'Montserrat';
+  /* font-family: 'Montserrat'; */
 }
 
 hr.star-light,
@@ -100,7 +100,7 @@ section h2 {
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-weight: 700;
-  font-family: 'Montserrat';
+  /* font-family: 'Montserrat'; */
 }
 
 #mainNav .navbar-brand {
@@ -180,7 +180,7 @@ header.masthead h1 {
 
 header.masthead h2 {
   font-size: 1.3rem;
-  font-family: 'Lato';
+  /* font-family: 'Lato'; */
 }
 
 @media (min-width: 992px) {
@@ -500,6 +500,31 @@ hr.star-dark, hr.star-light {
 
 .ant-carousel .slick-slide h3 {
   color: #fff;
+}
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255,255,255,.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+.ant-menu-item-active {
+  background-color: rgba(24, 188, 256, 0.2) !important;
+}
+
+.ant-menu-item-active {
+  background-color: rgba(24, 188, 256, 0.2) !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #18bc9c !important;
 }
 /* slider image size */
 

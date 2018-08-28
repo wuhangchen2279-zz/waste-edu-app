@@ -19,6 +19,9 @@ import { getAllStories} from './actions/index';
 import styled from 'styled-components';
 import StoryBoxComponent from './containers/story_box';
 import Home from './components/home';
+import WebFont from 'webfontloader';
+import { Layout } from 'antd';
+import HabitTrackerDetail from './containers/habit_tracker_detail';
 
 const middleware = [ thunk ];
 
@@ -29,6 +32,12 @@ const store = createStore(
 
 store.dispatch(getAllStories());
 
+WebFont.load({
+    google: {
+      families: ['M+PLUS+Rounded+1c', 'sans-serif']
+    }
+  });
+
 library.add(
     faKey, 
     faBookReader,
@@ -36,23 +45,25 @@ library.add(
     faTasks,
     faUsers);
 
-const MainDiv = styled.div`
-    height: calc(100vh - 20px);
-`;
+const { Content, Footer } = Layout;
 
 ReactDOM.render(
     <Provider store={store}>
           <BrowserRouter>
-            <MainDiv>
+            <Layout>
                 <NavigationHeader />
-                <Switch>
-                    <Route path="/habit-tracker" component={HabitTrackerComponent} />
-                    <Route path="/story/:id" component={StoryBoxComponent} />
-                    <Route path="/stories" component={StoriesGridComponent} />
-                    <Route path="/" component={Home} />
-                    
-                </Switch>
-            </MainDiv>
+                <Content className="masthead bg-primary text-white text-center" style={{ minHeight: 'calc(100vh - 186px)', marginTop: 64 }}>
+                    <Switch>
+                        <Route path="/habit-tracker" component={HabitTrackerDetail} />
+                        <Route path="/story/:id" component={StoryBoxComponent} />
+                        <Route path="/stories" component={StoriesGridComponent} />
+                        <Route path="/" component={Home} />
+                    </Switch>
+                </Content>
+                <Footer style={{ textAlign: 'center' }}>
+                    Waste.edu Design ©{(new Date()).getFullYear()}
+                </Footer>
+            </Layout>
           </BrowserRouter>
     </Provider>, 
     document.getElementById('root')
