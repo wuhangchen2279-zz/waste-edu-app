@@ -61,7 +61,7 @@ ReactDOM.render(
                     </Switch>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    Waste.edu Design ©{(new Date()).getFullYear()}
+                    Zero Waste.edu ©{(new Date()).getFullYear()}
                 </Footer>
             </Layout>
           </BrowserRouter>
