@@ -2,42 +2,48 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import { ANIMATION_SPEED_HABIT } from '../constants/static_types';
 
-const HabitAnimation = styled.div`
-    height: 200px;
-    width: 200px;
-    ${props => `
-        background-image: url(${props.habitImgs});
-    `}
-`;
-
 class HabitItem extends Component{
 
     constructor(props) {
         super(props);
+        this.imgs = this.props.habitsImg;
         this.state = {
-            habitImage: props.habitsImg[0],
+            imgIndex: 0,
             renderCounter: 0
         };
+        this.changeHabitImg = this.changeHabitImg.bind(this);
     }
 
     componentDidMount() {
-        const {habitsImg} = this.props;
-        if(this.props.onAnimationFinished && habitsImg) {
-            const interval = setInterval(() => {
-                this.setState({habitImage: habitsImg[this.state.renderCounter]});
-                this.setState({renderCounter: this.state.renderCounter + 1});
-                if(this.state.renderCounter > habitsImg.length - 1) {
-                    clearInterval(interval);
-                    this.props.onAnimationFinished();
-                }
-            }, ANIMATION_SPEED_HABIT);
+        this.timeout = setTimeout(
+            this.changeHabitImg,
+            ANIMATION_SPEED_HABIT
+        )
+    }
+
+    changeHabitImg() {
+        this.setState({renderCounter: this.state.renderCounter + 1});
+        if(this.state.renderCounter > this.imgs.length-1) {
+            if(this.props.onAnimationFinished){
+                this.props.onAnimationFinished();
+            }
+        } else {
+            this.setState( ({ imgIndex }) => {
+                const nextImgIndex = ++imgIndex % this.imgs.length
+                return { imgIndex: nextImgIndex }
+              },  ()=> {
+                this.timeout = setTimeout(
+                  this.changeHabitImg,
+                  ANIMATION_SPEED_HABIT
+                )
+              });
         }
     }
 
     render() {
         return (
-            <HabitAnimation 
-                habitImgs={this.state.habitImage}
+            <img width="300px" 
+                src={this.imgs[this.state.imgIndex]}
             />
         );
     }
