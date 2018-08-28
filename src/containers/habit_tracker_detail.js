@@ -41,12 +41,12 @@ class HabitTrackerDetail extends Component {
                     <div id="imgToPrint">
                         <img className="img-fluid mt-5 mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
                     </div>
-                    <button onClick={this.downloadPdf} className="btn btn-primary btn-xl font-weight-light mb-1">Download Here!</button>
+                    <button onClick={this.downloadPdf} className="btn btn-primary btn-xl font-weight-light mb-1">Download Zero-Waste Challenge Form Here!</button>
                     <div style={{marginTop: '3rem'}}>
-                        <h3 className="text-uppercase mb-2">This is how people use it!</h3>
+                        <h3 className="text-uppercase mb-2">This is how people use zero-waste challenge form!</h3>
                         <Carousel autoplay>
-                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
-                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/No straws.png')} alt="" /></div>
+                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/demo-1.png')} alt="" /></div>
+                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/demo-2.png')} alt="" /></div>
                             <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
                         </Carousel>
                     </div>

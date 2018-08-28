@@ -17,7 +17,9 @@ class NavigationHeader extends Component {
 
     return (
       <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <div className="logo" />
+        <div>
+          <img className="logo" src={require('../static/habit_bad/turtle_logo.png')} alt="" />
+        </div>
         <Menu
           theme="dark"
           mode="horizontal"
@@ -32,7 +34,7 @@ class NavigationHeader extends Component {
             <NavMenuItem routeUrl="/stories" icon="book-reader" label="Story" iconColor="#ea7066" />
           </Menu.Item>
           <Menu.Item key="/habit-tracker">
-            <NavMenuItem routeUrl="/habit-tracker" icon="tasks" label="Tracker" iconColor="#a597e7" />
+            <NavMenuItem routeUrl="/habit-tracker" icon="tasks" label="Challenge" iconColor="#a597e7" />
           </Menu.Item>
         </Menu>
       </Header>
