@@ -6,6 +6,10 @@
 #firebase
 /.firebase
 
+#api key
+/src/config/dev.js
+/src/config/prod.js
+
 # testing
 /coverage
 
