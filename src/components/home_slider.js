@@ -57,7 +57,7 @@ class HomeSliders extends React.Component {
             }}>
               {/* <h2 className="mb-0">Fight Waste for Animals !</h2> */}
               {/* <hr className="star-light"/> */}
-                <Link to="/stories" 
+                <Link to="/story/1" 
                     style={{width: '200px', marginTop: '213px'}}
                     className="btn btn-primary btn-xl font-weight-light mb-1">
                     Read Story Now!
