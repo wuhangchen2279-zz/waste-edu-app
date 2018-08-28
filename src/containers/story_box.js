@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
-import { Modal } from 'antd';
+import { Modal, Button } from 'antd';
 import LoadingPanel from '../components/loading_panel';
 import StoryBodyComponent from '../components/story_body';
 import StoryInputComponent from '../components/story_input';
 
 const StoryContainer = styled.div`
-    margin: 120px auto 10px auto;
+    margin: 10px auto;
     height: 960px;
     width: 1163px;
     border: 3px solid #18bc9c;
@@ -90,10 +90,13 @@ class StoryBoxComponent extends Component {
                 <Modal
                     centered
                     maskClosable={false}
-                    title="Basic Modal"
+                    title="Can You Please Help Me?"
                     visible={this.state.showModal}
-                    cancelText=""
-                    onOk={this.handleOk.bind(this)}
+                    footer={[
+                        <Button key="submit" type="primary" onClick={this.handleOk.bind(this)}>
+                            Let's Do It!
+                        </Button>
+                    ]}
                     onCancel={this.handleCancel.bind(this)}
                 >
                     <p>Pictures goes here</p>

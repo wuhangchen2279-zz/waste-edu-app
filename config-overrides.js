@@ -7,7 +7,8 @@ module.exports = function override(config, env) {
         javascriptEnabled: true,
         modifyVars: { 
             // modify ant design theme here
-            // eg - "@primary-color": "#1DA57A",
+            "@primary-color": "#18bc9c",
+            "@font-family": `'M PLUS Rounded 1c', sans-serif !important`,
         },
     })(config, env);
 

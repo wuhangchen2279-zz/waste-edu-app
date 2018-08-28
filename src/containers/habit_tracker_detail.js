@@ -25,23 +25,18 @@ class HabitTrackerDetail extends Component {
      render() {
     
         return (
-                <header className="masthead bg-primary text-white text-center">
-                    <div className="container"> 
-                        
-                        <img id="imgToPrint" className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
-                        <button onClick={this.downloadPdf} className="btn btn-primary btn-xl font-weight-light mb-1">Download Here!</button>
-                        <br/><br/>
-                        <h2 className="text-uppercase mb-0">This is how poeple use it!</h2>
-                        <br/><br/>
-                        <Carousel autoplay>
-                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
-                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/No straws.png')} alt="" /></div>
-                            <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
-                        </Carousel>
-
-                        
-                    </div>
-                </header>
+                <div className="container"> 
+                    <img id="imgToPrint" className="img-fluid mt-5 mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
+                    <button onClick={this.downloadPdf} className="btn btn-primary btn-xl font-weight-light mb-1">Download Here!</button>
+                    <br/><br/>
+                    <h2 className="text-uppercase mb-0">This is how poeple use it!</h2>
+                    <br/><br/>
+                    <Carousel autoplay>
+                        <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
+                        <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/No straws.png')} alt="" /></div>
+                        <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
+                    </Carousel>
+                </div>
             
             );
 

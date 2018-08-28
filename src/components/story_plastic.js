@@ -13,6 +13,8 @@ const DetailContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
     background-image: ${props => `url(${props.bgImage})`};
 `;
 
