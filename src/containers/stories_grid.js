@@ -13,16 +13,12 @@ class StoriesGridComponent extends Component {
 
     render() {
         return (
-            <section className="portfolio">
-                <div className="container">
-                    <h2 className="text-center text-uppercase text-secondary mb-0">Stories</h2>
-                    <hr className="star-dark mb-5">
-                    </hr>
-                    <div className="row story-row">
-                        {this.renderStoryGridItem()}
-                    </div>
+            <div className="container" style={{margin: "3rem auto"}}>
+                <h2 className="text-center text-uppercase text-secondary mb-0 text-white">Stories</h2>
+                <div className="row story-row mt-5">
+                    {this.renderStoryGridItem()}
                 </div>
-            </section>
+            </div>
         );
     }
 }

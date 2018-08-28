@@ -13,7 +13,9 @@ class HabitTrackerDetail extends Component {
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({
-                orientation: 'landscape'
+                orientation: 'landscape',
+                unit: 'px',
+                format: [1050, 720]
             });
             pdf.addImage(imgData, 'JPEG', 0, 0);
             // pdf.output('dataurlnewwindow');
@@ -26,7 +28,9 @@ class HabitTrackerDetail extends Component {
     
         return (
                 <div className="container"> 
-                    <img id="imgToPrint" className="img-fluid mt-5 mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
+                    <div id="imgToPrint">
+                        <img className="img-fluid mt-5 mb-5 d-block mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
+                    </div>
                     <button onClick={this.downloadPdf} className="btn btn-primary btn-xl font-weight-light mb-1">Download Here!</button>
                     <br/><br/>
                     <h2 className="text-uppercase mb-0">This is how poeple use it!</h2>

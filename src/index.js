@@ -52,7 +52,7 @@ ReactDOM.render(
           <BrowserRouter>
             <Layout>
                 <NavigationHeader />
-                <Content className="masthead bg-primary text-white text-center" style={{ minHeight: 'calc(100vh - 186px)', marginTop: 64 }}>
+                <Content className="masthead bg-primary text-white text-center" style={{ minHeight: 'calc(100vh - 133px)', marginTop: 64 }}>
                     <Switch>
                         <Route path="/habit-tracker" component={HabitTrackerDetail} />
                         <Route path="/story/:id" component={StoryBoxComponent} />
