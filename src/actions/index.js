@@ -9,6 +9,7 @@ const receiveStories = stories => ({
 
 export const getAllStories = () => dispatch => {
     storiesRef.on("value", snapshot => {
+        console.log(snapshot.val());
         dispatch(receiveStories(snapshot.val()));
     })
 }
@@ -20,6 +21,7 @@ const receiveHabits = habits => ({
 
 export const getAllHabits = () => dispatch => {
     storiesRef.on("value", snapshot => {
-        dispatch(receiveHabits(_.map(snapshot.val(), story => story.habits)));
+        console.log(snapshot.val());
+        dispatch(receiveHabits(snapshot.val().map(story => story.habits)))
     })
 }
