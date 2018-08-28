@@ -20,7 +20,7 @@ const StoryContainer = styled.div`
 `;
 
 const StoryHeader = styled.div`
-    height: 100px;
+    height: 130px;
     background: #d3fff6;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -75,7 +75,8 @@ class StoryBoxComponent extends Component {
         return (
             <StoryContainer key={this.state.boxKey}>
                 <StoryHeader>
-                    <h5>{story.title}</h5>
+                    <h5 style={{color: '#18bc9c'}}>{story.title}</h5>
+                    <h5 style={{color: '#18bc9c'}}>Click buttons below to play story</h5>
                     <StoryInputComponent 
                         onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
                         storyInputs={story.storyInputs}
