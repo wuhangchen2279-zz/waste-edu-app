@@ -42,7 +42,7 @@ class HabitItem extends Component{
 
     render() {
         return (
-            <img width="300px" 
+            <img width="200px" 
                 src={this.imgs[this.state.imgIndex]}
             />
         );

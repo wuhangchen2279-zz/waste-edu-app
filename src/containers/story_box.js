@@ -9,27 +9,24 @@ import StoryInputComponent from '../components/story_input';
 
 const StoryContainer = styled.div`
     margin: 10px auto;
-    height: 960px;
-    width: 1163px;
+    height: 682px;
+    width: 1000px;
     border: 3px solid #18bc9c;
     text-align: center;
     border-radius: 10px;
-    flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 `;
 
-const StoryHeader = styled.div`
-    height: 130px;
+const StorySider = styled.div`
     background: #d3fff6;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 6px 20px;
-    display: flex;
+    border-radius: 8px;
+    padding: 5px;
+    display: inline;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 3px solid #18bc9c;
+    border-left: 3px solid #18bc9c;
 `;
 
 class StoryBoxComponent extends Component {
@@ -73,36 +70,37 @@ class StoryBoxComponent extends Component {
             return <LoadingPanel />
         }
         return (
-            <StoryContainer key={this.state.boxKey}>
-                <StoryHeader>
-                    <h5 style={{color: '#18bc9c'}}>{story.title}</h5>
-                    <h5 style={{color: '#18bc9c'}}>Click buttons below to play story</h5>
-                    <StoryInputComponent 
-                        onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
-                        storyInputs={story.storyInputs}
-                        isStoryPlaying={this.state.isStoryPlaying}
+            <div>
+                <span style={{color: 'white', fontWeight: '700', fontSize: '1.2em', paddingBottom: '10px'}}>{story.title}</span>
+                <StoryContainer key={this.state.boxKey}>
+                    <StoryBodyComponent 
+                        story={story} 
+                        inputIndex={this.state.inputIndex}
+                        onOneAniFinished={() => this.onAnimationFinished()}
                     />
-                </StoryHeader>
-                <StoryBodyComponent 
-                    story={story} 
-                    inputIndex={this.state.inputIndex}
-                    onOneAniFinished={() => this.onAnimationFinished()}
-                />
-                <Modal
-                    centered
-                    maskClosable={false}
-                    title="Turtle: I am dying. Can you please help me?"
-                    visible={this.state.showModal}
-                    footer={[
-                        <Button key="submit" type="primary" onClick={this.handleOk.bind(this)}>
-                            Let's Do It!
-                        </Button>
-                    ]}
-                    onCancel={this.handleCancel.bind(this)}
-                >
-                    <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require('../static/story_end/Story1_Ending_sad.png')}></img></p>
-                </Modal>
-            </StoryContainer>
+                    <StorySider>
+                        <StoryInputComponent 
+                            onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
+                            storyInputs={story.storyInputs}
+                            isStoryPlaying={this.state.isStoryPlaying}
+                        />
+                    </StorySider>
+                    <Modal
+                        centered
+                        maskClosable={false}
+                        title="Turtle: I am dying. Can you please help me?"
+                        visible={this.state.showModal}
+                        footer={[
+                            <Button key="submit" type="primary" onClick={this.handleOk.bind(this)}>
+                                Let's Do It!
+                            </Button>
+                        ]}
+                        onCancel={this.handleCancel.bind(this)}
+                    >
+                        <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require('../static/story_end/Story1_Ending_sad.png')}></img></p>
+                    </Modal>
+                </StoryContainer>
+            </div>
             
         );
     }

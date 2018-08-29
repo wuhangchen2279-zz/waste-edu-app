@@ -13,8 +13,7 @@ const DetailContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
     background-image: ${props => `url(${props.bgImage})`};
 `;
 
@@ -143,7 +142,7 @@ class StoryPlasticComponent extends Component {
                 <AnimationComponent>
                     {this.renderAnimationItems()}
                     <img 
-                        style={{marginTop: '200px'}} 
+                        style={{marginTop: '60px'}} 
                         src={require(`../static/story_output/${story.id}_outputItem_${this.state.storyOutputIdx}.png`)} 
                         alt="story output" 
                     />

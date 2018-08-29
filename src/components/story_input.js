@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const InputImage = styled.div`
     margin: 5px;
-    width: 120px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -37,7 +37,7 @@ class StoryInputComponent extends Component {
     render() {
         const {storyInputs} = this.props;
         return (
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
                 {storyInputs.map((input, index) => {
                     return (
                         <InputImage 
