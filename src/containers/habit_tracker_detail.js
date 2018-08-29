@@ -73,15 +73,14 @@ class HabitTrackerDetail extends Component {
             case steps[1].title:
                 return (
                     <div className="steps-content">
-                        <div id="imgToPrint">
-                            <img className="img-fluid mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
-                        </div>
-                        <div style={{ position: "relative", height: 0 }}>
-                            <button style={{ position: "relative", bottom: 471, opacity: 0.8 }}
+                            <button  
+                                style={{marginTop: '10px'}}
                                 onClick={this.downloadPdf}
-                                className="btn btn-primary btn-xl font-weight-light mb-1">
-                                Download Zero-Waste Challenge Form Here!
+                                className="btn btn-primary btn-m font-weight-light mb-1">
+                                Download  Here!
                             </button>
+                        <div id="imgToPrint">
+                            <img width="800px" height="500px" className="img-fluid mx-auto" src={require('../static/habit_good/habit_table_v2.png')} alt="" />
                         </div>
 
                     </div>
@@ -105,7 +104,7 @@ class HabitTrackerDetail extends Component {
         const { current } = this.state;
         return (
             <div style={{
-                width: "100%",
+                width: "70%",
                 textAlign: "left",
                 padding: "10px"
             }}>
