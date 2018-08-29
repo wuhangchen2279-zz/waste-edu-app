@@ -6,6 +6,13 @@
 #firebase
 /.firebase
 
+#api key
+/src/config/dev.js
+/src/config/prod.js
+
+#pkg lock
+package-lock.json
+
 # testing
 /coverage
 
