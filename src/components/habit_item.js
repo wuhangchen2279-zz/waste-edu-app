@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import styled from 'styled-components';
 import { ANIMATION_SPEED_HABIT } from '../constants/static_types';
 
 class HabitItem extends Component{
@@ -44,6 +43,7 @@ class HabitItem extends Component{
         return (
             <img width="200px" 
                 src={this.imgs[this.state.imgIndex]}
+                alt="index"
             />
         );
     }

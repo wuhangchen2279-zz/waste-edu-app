@@ -97,7 +97,7 @@ class StoryBoxComponent extends Component {
                         ]}
                         onCancel={this.handleCancel.bind(this)}
                     >
-                        <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require('../static/story_end/Story1_Ending_sad.png')}></img></p>
+                        <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require('../static/story_end/Story1_Ending_sad.png')} alt="story end"></img></p>
                     </Modal>
                 </StoryContainer>
             </div>

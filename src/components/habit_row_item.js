@@ -1,5 +1,4 @@
 import React from 'react';
-import LoadingPanel from './loading_panel';
 
 const HabitRowItem = (props) => {
     const {habit, index} = props;

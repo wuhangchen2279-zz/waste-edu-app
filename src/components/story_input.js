@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import { Icon } from 'antd';
 
 const InputImage = styled.div`
     margin: 5px;
@@ -38,6 +39,7 @@ class StoryInputComponent extends Component {
         const {storyInputs} = this.props;
         return (
             <div style={{display: 'flex', flexDirection: 'column'}}>
+                <Icon type="caret-down" style={{color: '#18bc9c', fontSize: "40px"}} />
                 {storyInputs.map((input, index) => {
                     return (
                         <InputImage 
@@ -50,6 +52,7 @@ class StoryInputComponent extends Component {
                             inputBg={require(`../static/story_input/${input}`)}/>
                     );
                 })}
+                <Icon type="caret-up" style={{color: '#18bc9c', fontSize:"40px"}} />
             </div>
         );
     }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 class HomeSliders extends React.Component {
@@ -46,7 +46,7 @@ class HomeSliders extends React.Component {
   render() {
     return (
       <div style={{ margin: "10px auto", display: "flex", justifyContent: 'center' }}>
-        <img height="665px" src={this.backgrounds[this.state.backgroundIndex]} />
+        <img height="665px" src={this.backgrounds[this.state.backgroundIndex]} alt="slider"/>
       </div>
 
 
