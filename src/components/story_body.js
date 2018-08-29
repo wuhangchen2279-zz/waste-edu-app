@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { STORY_PLASTIC_ID } from '../constants/static_types';
 import StoryPlasticComponent from './story_plastic';
 
-
+//Story body component to render story detail information. For now, only supported plastic story
 class StoryBodyComponent extends Component {
     render() {
         const {story, inputIndex} = this.props;

@@ -1,6 +1,7 @@
 import { RECEIVE_HABITS } from '../constants/action_types';
 import _ from 'lodash';
 
+//habit reducer to fecth data with receve habit action type
 const byId = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_HABITS:

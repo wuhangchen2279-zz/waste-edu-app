@@ -2,7 +2,7 @@ import React from 'react';
 import HomeSliders from '../components/home_slider';
 import { Link } from 'react-router-dom';
 
-
+//funciton component to render home page
 const Home = () => {
 
     return (

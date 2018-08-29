@@ -4,17 +4,19 @@ import { Layout, Menu } from 'antd';
 import NavMenuItem from './nav_menu_item';
 
 class NavigationHeader extends Component {
+  //render the header componet of web app, allowing menu navigation
   render() {
     const { pathname } = this.props.location;
     const { Header } = Layout;
+
+    // reserve this code for future use.
     // let rootPath = pathname.split('/')[1];
     // if(rootPath && rootPath === 'story') {
     //   rootPath = '/stories';
     // } else {
     //   rootPath = pathname;
     // }
-
-
+    
     return (
       <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
         <div className="logo">

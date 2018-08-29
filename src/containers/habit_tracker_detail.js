@@ -6,6 +6,7 @@ import html2canvas from 'html2canvas';
 import _ from 'lodash';
 import HabitRowItem from '../components/habit_row_item';
 
+//define ant design steps
 const Step = Steps.Step;
 
 const steps = [{
@@ -19,9 +20,10 @@ const steps = [{
     icon: 'info-circle-o'
 }];
 
-
+//componet for habit tracker detail
 class HabitTrackerDetail extends Component {
 
+    //constructor for habit tracker
     constructor(props) {
         super(props);
         this.state = {
@@ -29,6 +31,7 @@ class HabitTrackerDetail extends Component {
         }
     }
 
+    //functio to download 0-waste challenge form
     downloadPdf() {
         const input = document.getElementById('imgToPrint');
         html2canvas(input)
@@ -45,6 +48,7 @@ class HabitTrackerDetail extends Component {
             ;
     }
 
+    //render the good vs bad habits grid
     renderHabitGrid() {
         const { habits } = this.props;
         return _.map(habits, (habit, index) => {
@@ -52,16 +56,19 @@ class HabitTrackerDetail extends Component {
         })
     }
 
+    //event handler for next step btn
     next() {
         const current = this.state.current + 1;
         this.setState({ current });
     }
 
+    //event handler for previous step btn
     prev() {
         const current = this.state.current - 1;
         this.setState({ current });
     }
 
+    //render step content for different pages
     renderContent(step) {
         switch (step.title) {
             case steps[0].title:
@@ -100,6 +107,7 @@ class HabitTrackerDetail extends Component {
         }
     }
 
+    //render habit tracker detail component
     render() {
         const { current } = this.state;
         return (

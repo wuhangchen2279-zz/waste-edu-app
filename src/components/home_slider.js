@@ -1,7 +1,8 @@
 import React from 'react';
 
-
 class HomeSliders extends React.Component {
+
+  //constructor function for Home slider component
   constructor(props) {
     super(props)
     this.backgrounds = [require("../static/home/Home01.png"),
@@ -19,6 +20,7 @@ class HomeSliders extends React.Component {
     this.changeBackground = this.changeBackground.bind(this)
   }
 
+  //React lifecycle event to handle image background animation
   componentDidMount() {
     this.timeout = setTimeout(
       this.changeBackground,
@@ -26,10 +28,12 @@ class HomeSliders extends React.Component {
     )
   }
 
+  //clear time out after component will mount event fired
   componentWillUnmount() {
     if (this.timeout) clearTimeout(this.timeout)
   }
 
+  //background animaiton renderer
   changeBackground() {
     this.setState(function ({ backgroundIndex }) {
       const nextBackgroundIndex = ++backgroundIndex % this.backgrounds.length
@@ -43,6 +47,7 @@ class HomeSliders extends React.Component {
     })
   }
 
+  //render background accroding to background index
   render() {
     return (
       <div style={{ margin: "10px auto", display: "flex", justifyContent: 'center' }}>

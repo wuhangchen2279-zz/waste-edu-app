@@ -7,6 +7,7 @@ import LoadingPanel from '../components/loading_panel';
 import StoryBodyComponent from '../components/story_body';
 import StoryInputComponent from '../components/story_input';
 
+//styled component for story container
 const StoryContainer = styled.div`
     margin: 10px auto;
     height: 682px;
@@ -18,6 +19,7 @@ const StoryContainer = styled.div`
     flex-direction: row;
 `;
 
+//style componet to story sider bar to include story input btns
 const StorySider = styled.div`
     background: #d3fff6;
     border-radius: 8px;
@@ -29,7 +31,9 @@ const StorySider = styled.div`
     border-left: 3px solid #18bc9c;
 `;
 
+//Story Box componet to display story detail
 class StoryBoxComponent extends Component {
+    //constructor function
     constructor(props) {
         super(props);
         this.state = {
@@ -41,6 +45,7 @@ class StoryBoxComponent extends Component {
         }
     }
 
+    //event handeler after animation completed
     onAnimationFinished() {
         this.setState({isStoryPlaying: false});
         this.setState({animationCounter: this.state.animationCounter + 1});
@@ -49,11 +54,13 @@ class StoryBoxComponent extends Component {
         }
     }
 
+    //handle ok button event for modal
     handleOk(e) {
         this.setState({showModal: false});
         this.props.history.push('/habit-tracker');
     }
 
+    //close modal when modal get canceled
     handleCancel(e) {
         this.setState({boxKey: this.state.boxKey + 1});
         this.setState({
@@ -64,6 +71,7 @@ class StoryBoxComponent extends Component {
         this.setState({showModal: false});
     }
 
+    //render story box componet
     render() {
         const {story} = this.props; 
         if(!story) {
@@ -106,11 +114,13 @@ class StoryBoxComponent extends Component {
     }
 }
 
+//map app state stories to this component props
 const mapStateToProps = (state, ownProps) => {
     const {id} = ownProps.match.params;
     return {story: state.stories[id]}
 }
 
+//esbalish connection between react and redux
 export default withRouter(
     connect( 
         mapStateToProps,

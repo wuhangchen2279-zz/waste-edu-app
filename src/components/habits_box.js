@@ -7,6 +7,7 @@ const HabitsContainer = styled.div`
     justify-content: space-between;
 `;
 
+//function component to render habit box in story animation, including both good and bad habit animation
 const HabitsBoxComponent = (props) => {
     const {goodHabitImg, badHabitImg, habitRef} = props;
     

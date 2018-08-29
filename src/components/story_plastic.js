@@ -5,6 +5,7 @@ import _ from 'lodash';
 import HabitsBoxComponent from './habits_box';
 import { ANIMATION_SPEED_ITEM } from '../constants/static_types';
 
+//styled component to render story detail
 const DetailContainer = styled.div`
     display: flex;
     flex: 1;
@@ -17,14 +18,17 @@ const DetailContainer = styled.div`
     background-image: ${props => `url(${props.bgImage})`};
 `;
 
+//styled componet to contain habit animation
 const HabitContainer = styled.div`
     height: 30%;
 `;
 
+//styled compoent to contain story animation
 const AnimationComponent = styled.div`
     height: 80%;
 `;
 
+//styled component to style each of plastic rubbish item, and define the react pose behaviour for each item.
 const AnimationItem = styled(posed.div({
    0: {
        x: ({positions}) => positions[0].x, 
@@ -64,10 +68,10 @@ const AnimationItem = styled(posed.div({
     `}
 `;
 
-// transform: translateX(470px) translateY(240px) rotate(360deg) translateZ(0px);
-
+//Component for plastic story
 class StoryPlasticComponent extends Component {
 
+    //constructor function for story plastic compoent.
     constructor(props) {
         super(props);
         this.state = {
@@ -77,7 +81,7 @@ class StoryPlasticComponent extends Component {
         };
     }
 
-
+    //event handler when animation get started
     onAnimationStart() {
         const {inputIndex, story} = this.props;
         this.setState({
@@ -105,6 +109,7 @@ class StoryPlasticComponent extends Component {
         }, 500)
     }
 
+    //render all animation items for specific story input
     renderAnimationItems() {
         const {inputIndex} = this.props;
         return this.state.selHabits.length > 0? (
@@ -127,6 +132,7 @@ class StoryPlasticComponent extends Component {
         ): null;
     }
 
+    //render plastic story component
     render() {
         const {story, inputIndex} = this.props;
         return (

@@ -1,5 +1,6 @@
 import React from 'react';
 
+//function component to render good VS bad habit list
 const HabitRowItem = (props) => {
     const {habit, index} = props;
     return (

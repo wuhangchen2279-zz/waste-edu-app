@@ -21,6 +21,7 @@ import WebFont from 'webfontloader';
 import { Layout } from 'antd';
 import HabitTrackerDetail from './containers/habit_tracker_detail';
 
+//make use of redux thunk middleware
 const middleware = [ thunk ];
 
 const store = createStore(
@@ -28,15 +29,18 @@ const store = createStore(
     applyMiddleware(...middleware)
 )
 
+//fetch stories and habits from redux thunk
 store.dispatch(getAllStories());
 store.dispatch(getAllHabits());
 
+//load M+PLUS+Rounded+1c font family for whole website
 WebFont.load({
     google: {
       families: ['M+PLUS+Rounded+1c', 'sans-serif']
     }
   });
 
+//Add fontawesome libary to project
 library.add(
     faKey, 
     faBookReader,
@@ -44,8 +48,11 @@ library.add(
     faTasks,
     faUsers);
 
+
+//make use of ant design layout
 const { Content, Footer } = Layout;
 
+//render react router for different pages
 ReactDOM.render(
     <Provider store={store}>
           <BrowserRouter>

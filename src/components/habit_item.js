@@ -3,6 +3,7 @@ import { ANIMATION_SPEED_HABIT } from '../constants/static_types';
 
 class HabitItem extends Component{
 
+    //Habit Item component constructor
     constructor(props) {
         super(props);
         this.imgs = this.props.habitsImg;
@@ -13,6 +14,7 @@ class HabitItem extends Component{
         this.changeHabitImg = this.changeHabitImg.bind(this);
     }
 
+    //React lifecycle event after component did mount
     componentDidMount() {
         this.timeout = setTimeout(
             this.changeHabitImg,
@@ -20,6 +22,7 @@ class HabitItem extends Component{
         )
     }
 
+    //Habit image animation renderer    
     changeHabitImg() {
         this.setState({renderCounter: this.state.renderCounter + 1});
         if(this.state.renderCounter > this.imgs.length-1) {
@@ -39,6 +42,7 @@ class HabitItem extends Component{
         }
     }
 
+    //render habit image based on state image index.
     render() {
         return (
             <img width="200px" 
