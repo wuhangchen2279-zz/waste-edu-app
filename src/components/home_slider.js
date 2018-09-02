@@ -1,4 +1,6 @@
 import React from 'react';
+import Slider from 'react-slick';
+import { NextArrow, PrevArrow } from './slider_arrow';
 
 class HomeSliders extends React.Component {
 
@@ -15,43 +17,36 @@ class HomeSliders extends React.Component {
     require("../static/home/Home08.png"),
     require("../static/home/Home09.png"),
     require("../static/home/Home10.png")]
-    this.state = { backgroundIndex: 0 }
 
-    this.changeBackground = this.changeBackground.bind(this)
   }
 
-  //React lifecycle event to handle image background animation
-  componentDidMount() {
-    this.timeout = setTimeout(
-      this.changeBackground,
-      this.props.animDuration * 1000
-    )
-  }
-
-  //clear time out after component will mount event fired
-  componentWillUnmount() {
-    if (this.timeout) clearTimeout(this.timeout)
-  }
-
-  //background animaiton renderer
-  changeBackground() {
-    this.setState(function ({ backgroundIndex }) {
-      const nextBackgroundIndex = ++backgroundIndex % this.backgrounds.length
-
-      return { backgroundIndex: nextBackgroundIndex }
-    }, function () {
-      this.timeout = setTimeout(
-        this.changeBackground,
-        this.props.animDuration * 1000
-      )
-    })
+  renderBackgrounds() {
+    return this.backgrounds.map(bg => {
+      return (
+        <div key={bg}>
+          <img height="665px" src={bg} alt="slider"/>
+        </div>
+      );
+    });
   }
 
   //render background accroding to background index
   render() {
+    const sliderSettings = {
+      dots: true,
+      infinite: true,
+      fade: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
+    }
     return (
-      <div style={{ margin: "10px auto", display: "flex", justifyContent: 'center' }}>
-        <img height="665px" src={this.backgrounds[this.state.backgroundIndex]} alt="slider"/>
+      <div style={{margin: '10px auto', width: 898.64}}>
+        <Slider {...sliderSettings}>
+            {this.renderBackgrounds()}
+          </Slider>
       </div>
 
 

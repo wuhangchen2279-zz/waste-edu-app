@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import 'font-awesome/css/font-awesome.min.css'
-import { faKey, faBookReader,faHome,faTasks,faUsers  } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faBookReader,faHome,faTasks,faUsers, faArrowCircleLeft, faArrowCircleRight  } from '@fortawesome/free-solid-svg-icons';
 
 import NavigationHeader from './components/navigation_header';
 import StoriesGridComponent from './containers/stories_grid';
@@ -42,6 +42,8 @@ WebFont.load({
 
 //Add fontawesome libary to project
 library.add(
+    faArrowCircleLeft,
+    faArrowCircleRight,
     faKey, 
     faBookReader,
     faHome,
