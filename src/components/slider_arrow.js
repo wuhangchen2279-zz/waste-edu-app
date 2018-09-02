@@ -10,7 +10,7 @@ export const PrevArrow = (props) => {
         >
             <FontAwesomeIcon
                 icon="arrow-circle-left"
-                color="#fff"
+                color={props.color? props.color: "#fff"}
                 size="2x"
             />
         </div>
@@ -26,7 +26,7 @@ export const NextArrow = (props) => {
         >
             <FontAwesomeIcon
                 icon="arrow-circle-right"
-                color="#fff"
+                color={props.color? props.color: "#fff"}
                 size="2x"
             />
         </div>

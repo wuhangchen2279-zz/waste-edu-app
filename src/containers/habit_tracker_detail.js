@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Carousel, Tabs, Icon } from 'antd';
+import { Tabs, Icon } from 'antd';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import _ from 'lodash';
 import HabitRowItem from '../components/habit_row_item';
+import { NextArrow, PrevArrow } from '../components/slider_arrow';
+import Slider from 'react-slick';
 
 //componet for habit tracker detail
 class HabitTrackerDetail extends Component {
+
+    constructor(props) {
+        super(props);
+        this.instructions = [
+            require('../static/habit_good/demo-1.png'),
+            require('../static/habit_good/demo-2.png'),
+            require('../static/habit_good/bring own cups.png'),
+        ];
+    }
 
     //functio to download 0-waste challenge form
     downloadPdf() {
@@ -34,10 +45,32 @@ class HabitTrackerDetail extends Component {
         })
     }
 
+    renderInstructions() {
+        return this.instructions.map(instruction => {
+            return (
+                <div key={instruction}>
+                    <img 
+                        className="img-fluid mb-5 d-block mx-auto" 
+                        src={instruction} 
+                        alt="instruction" />
+                </div>
+            );
+        })
+    }
+
 
     //render habit tracker detail component
     render() {
         const TabPane = Tabs.TabPane;
+        const sliderSettings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            nextArrow: <NextArrow color="#18bc9c" />,
+            prevArrow: <PrevArrow color="#18bc9c" />
+          }
         return (
             <div style={{
                 width: "70%",
@@ -65,11 +98,11 @@ class HabitTrackerDetail extends Component {
                     </div>
                 </TabPane>
                 <TabPane tab={<span><Icon type="info-circle-o" />How to Use the Form</span>} key="3">
-                    <Carousel autoplay>
-                        <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/demo-1.png')} alt="" /></div>
-                        <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/demo-2.png')} alt="" /></div>
-                        <div><img className="img-fluid mb-5 d-block mx-auto" src={require('../static/habit_good/bring own cups.png')} alt="" /></div>
-                    </Carousel>
+                    <div style={{width: 540, height: 625, margin: '0 auto'}}>
+                    <Slider {...sliderSettings}>
+                        {this.renderInstructions()}
+                    </Slider>
+                    </div>
                 </TabPane>
                </Tabs>
             </div>
