@@ -19,8 +19,21 @@ const StoryContainer = styled.div`
     flex-direction: row;
 `;
 
-//style componet to story sider bar to include story input btns
-const StorySider = styled.div`
+//style componet to story right sider bar to include story input btns
+const StoryLeftSider = styled.div`
+    background: #d3fff6;
+    border-radius: 8px;
+    padding: 5px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 3px solid #18bc9c;
+`;
+
+
+//style componet to story right sider bar to include story input btns
+const StoryRightSider = styled.div`
     background: #d3fff6;
     border-radius: 8px;
     padding: 5px;
@@ -49,7 +62,7 @@ class StoryBoxComponent extends Component {
     onAnimationFinished() {
         this.setState({isStoryPlaying: false});
         this.setState({animationCounter: this.state.animationCounter + 1});
-        if(this.state.animationCounter === this.props.story.storyInputs.length) {
+        if(this.state.animationCounter === this.props.story.storyGoodInputs.length) {
             this.setState({showModal: true});
         }
     }
@@ -81,18 +94,25 @@ class StoryBoxComponent extends Component {
             <div>
                 <span style={{color: 'white', fontWeight: '700', fontSize: '1.2em', paddingBottom: '10px'}}>{story.title}</span>
                 <StoryContainer key={this.state.boxKey}>
+                    <StoryLeftSider>
+                        <StoryInputComponent 
+                            onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
+                            storyInputs={story.storyBadInputs}
+                            isStoryPlaying={this.state.isStoryPlaying}
+                        />
+                    </StoryLeftSider>
                     <StoryBodyComponent 
                         story={story} 
                         inputIndex={this.state.inputIndex}
                         onOneAniFinished={() => this.onAnimationFinished()}
                     />
-                    <StorySider>
+                    <StoryRightSider>
                         <StoryInputComponent 
                             onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
-                            storyInputs={story.storyInputs}
+                            storyInputs={story.storyGoodInputs}
                             isStoryPlaying={this.state.isStoryPlaying}
                         />
-                    </StorySider>
+                    </StoryRightSider>
                     <Modal
                         centered
                         maskClosable={false}

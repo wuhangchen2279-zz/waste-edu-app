@@ -2,7 +2,12 @@
     {
         "id": 1, 
         "title": "Story 1",
-        "storyInputs": [
+        "storyBadInputs": [
+            "1_input0.svg",
+            "1_input1.svg",
+            "1_input2.svg"
+        ],
+        "storyGoodInputs": [
             "1_input0.svg",
             "1_input1.svg",
             "1_input2.svg"
@@ -11,6 +16,8 @@
             {
                 "id": 1,
                 "title": "habit 1",
+                "badHabitDesc": "bad habit desc for 1",
+                "goodHabitDesc": "good habit desc for 1",
                 "animationImg": [
                     {
                         "file": "1_plastic0.svg",
@@ -37,6 +44,8 @@
             {
                 "id": 2,
                 "title": "habit 2",
+                "badHabitDesc": "bad habit desc for 2",
+                "goodHabitDesc": "good habit desc for 2",
                 "animationImg": [
                     {
                         "file": "2_plastic0.svg",
@@ -63,6 +72,8 @@
             {
                 "id": 3,
                 "title": "habit 3",
+                "badHabitDesc": "bad habit desc for 3",
+                "goodHabitDesc": "good habit desc for 3",
                 "animationImg": [
                     {
                         "file": "3_plastic0.svg",

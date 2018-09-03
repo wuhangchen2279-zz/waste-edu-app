@@ -31,8 +31,11 @@ const AnimationComponent = styled.div`
 //styled component to style each of plastic rubbish item, and define the react pose behaviour for each item.
 const AnimationItem = styled(posed.div({
    0: {
-       x: ({positions}) => positions[0].x, 
-       y: ({positions}) => positions[0].y, 
+        x: ({positions}) => positions[0].x,
+        y: ({positions}) => positions[0].y,
+        transition: {
+            duration: ANIMATION_SPEED_ITEM
+         }
     },
    1: {
        x: ({positions}) => positions[1].x, 
@@ -118,10 +121,10 @@ class StoryPlasticComponent extends Component {
                     return ( 
                         <AnimationItem key={inputIndex + img.file}
                             itemImg={require(`../static/story_animate/${img.file}`)}    
-                            pose={this.state.poseConfigs[habit.id]}
+                            pose={this.state.poseConfigs[habit.id].toString()}
                             positions={{
-                                0: {x: 0, y: 0}, 
-                                1: {x: 260, y: 150},
+                                0: {x: 0, y: 50}, 
+                                1: {x: 260, y: 170},
                                 2: {x: img.x, y: img.y}
                             }}
                         />
