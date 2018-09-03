@@ -1,5 +1,6 @@
 import * as types from '../constants/action_types';
 import {storiesRef} from '../config/firebase';
+import StoriesAPI from '../apis/stories_api';
 
 //receive stories from redux thunk dispatch
 const receiveStories = stories => ({
@@ -9,9 +10,14 @@ const receiveStories = stories => ({
 
 //handle action to fectch all stroies from firebase DB
 export const getAllStories = () => dispatch => {
-    storiesRef.on("value", snapshot => {
-        dispatch(receiveStories(snapshot.val()));
+    StoriesAPI.getStroies(stories => {
+        dispatch(receiveStories(stories))
     })
+
+    // storiesRef.on("value", snapshot => {
+    //     console.log(snapshot.val());
+    //     dispatch(receiveStories(snapshot.val()));
+    // })
 }
 
 //receive habits from redux thunk dispatch
@@ -22,7 +28,11 @@ const receiveHabits = habits => ({
 
 //handle action to fetch all habits from firebase DB
 export const getAllHabits = () => dispatch => {
-    storiesRef.on("value", snapshot => {
-        dispatch(receiveHabits(snapshot.val().map(story => story.habits)))
+    StoriesAPI.getStroies(stories => {
+        dispatch(receiveHabits(stories.map(story => story.habits)))
     })
+
+    // storiesRef.on("value", snapshot => {
+    //     dispatch(receiveHabits(snapshot.val().map(story => story.habits)))
+    // })
 }
