@@ -18,7 +18,19 @@
                 "title": "habit 1",
                 "badHabitDesc": "bad habit desc for 1",
                 "goodHabitDesc": "good habit desc for 1",
-                "animationImg": [
+                "goodHabitAnimationImg": [
+                    {
+                        "file": "1_fish0.svg",
+                        "x": 220,
+                        "y": 285
+                    },
+                    {
+                        "file": "1_fish1.svg",
+                        "x": 167,
+                        "y": 308
+                    }
+                ],
+                "badHabitAnimationImg": [
                     {
                         "file": "1_plastic0.svg",
                         "x": 619,
@@ -46,7 +58,14 @@
                 "title": "habit 2",
                 "badHabitDesc": "bad habit desc for 2",
                 "goodHabitDesc": "good habit desc for 2",
-                "animationImg": [
+                "goodHabitAnimationImg": [
+                    {
+                        "file": "2_fish0.svg",
+                        "x": 270,
+                        "y": 285
+                    }
+                ],
+                "badHabitAnimationImg": [
                     {
                         "file": "2_plastic0.svg",
                         "x": 585,
@@ -74,7 +93,14 @@
                 "title": "habit 3",
                 "badHabitDesc": "bad habit desc for 3",
                 "goodHabitDesc": "good habit desc for 3",
-                "animationImg": [
+                "goodHabitAnimationImg": [
+                    {
+                        "file": "3_fish0.svg",
+                        "x": 250,
+                        "y": 285
+                    }
+                ],
+                "badHabitAnimationImg": [
                     {
                         "file": "3_plastic0.svg",
                         "x": 270,

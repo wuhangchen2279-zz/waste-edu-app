@@ -45,7 +45,8 @@ class HabitItem extends Component{
     //render habit image based on state image index.
     render() {
         return (
-            <img width="200px" 
+            <img width="250px" 
+                style={{marginTop: 20}}
                 src={this.imgs[this.state.imgIndex]}
                 alt="index"
             />

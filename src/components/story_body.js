@@ -5,14 +5,15 @@ import StoryPlasticComponent from './story_plastic';
 //Story body component to render story detail information. For now, only supported plastic story
 class StoryBodyComponent extends Component {
     render() {
-        const {story, inputIndex} = this.props;
+        const {story, inputIndex, inputType} = this.props;
         switch(story.id) {
             case STORY_PLASTIC_ID:
                 return (
                     <StoryPlasticComponent 
                         inputIndex={inputIndex} 
+                        inputType={inputType}
                         story={story} 
-                        onOneAnimationFinished={() => this.props.onOneAniFinished()}
+                        onOneAnimationFinished={(type) => this.props.onOneAniFinished(type)}
                     />
                 );
             default: 

@@ -10,8 +10,8 @@ import StoryInputComponent from '../components/story_input';
 //styled component for story container
 const StoryContainer = styled.div`
     margin: 10px auto;
-    height: 682px;
-    width: 1000px;
+    height: 606px;
+    width: 1196px;
     border: 3px solid #18bc9c;
     text-align: center;
     border-radius: 10px;
@@ -51,26 +51,60 @@ class StoryBoxComponent extends Component {
         super(props);
         this.state = {
             inputIndex: null,
+            inputType: null,
             isStoryPlaying: false,
             boxKey: 0,
-            animationCounter: 0,
+            badAnimationCounter: 0,
+            goodAnimationCounter: 0,
             showModal: false,
+            modalTitle: '',
+            modalImg: 'Story1_Ending_sad.png',
+            modalOkText: '',
+            isModalExternalRoute: false,
         }
     }
 
     //event handeler after animation completed
-    onAnimationFinished() {
+    onAnimationFinished(type) {
+        console.log(type);
         this.setState({isStoryPlaying: false});
-        this.setState({animationCounter: this.state.animationCounter + 1});
-        if(this.state.animationCounter === this.props.story.storyGoodInputs.length) {
-            this.setState({showModal: true});
+        if(type === 'bad') {
+            this.setState({badAnimationCounter: this.state.badAnimationCounter + 1});
+        } else {
+            this.setState({goodAnimationCounter: this.state.goodAnimationCounter + 1});
+        }
+        if(this.state.badAnimationCounter === this.props.story.storyBadInputs.length) {
+            this.setState({
+                showModal: true,
+                modalTitle: 'Turtle: I am dying. Can you please help me?',
+                modalImg: 'Story1_Ending_sad.png',
+                modalOkText: `Let's Do It!`,
+                isModalExternalRoute: true,
+            });
+        }
+        if(this.state.goodAnimationCounter === this.props.story.storyGoodInputs.length) {
+            this.setState({
+                showModal: true,
+                modalTitle: 'Turtle: You are making a better world!',
+                modalImg: 'Story1_Ending_sad.png',
+                modalOkText: `Let's Replay!`
+            });
         }
     }
 
     //handle ok button event for modal
     handleOk(e) {
         this.setState({showModal: false});
-        this.props.history.push('/habit-tracker');
+        if(this.state.isModalExternalRoute) {
+            this.props.history.push('/habit-tracker');
+        } else {
+            this.setState({boxKey: this.state.boxKey + 1});
+            this.setState({
+                inputIndex: null,
+                badAnimationCounter: 0,
+                goodAnimationCounter: 0
+            });
+        }
     }
 
     //close modal when modal get canceled
@@ -78,7 +112,8 @@ class StoryBoxComponent extends Component {
         this.setState({boxKey: this.state.boxKey + 1});
         this.setState({
             inputIndex: null,
-            animationCounter: 0
+            badAnimationCounter: 0,
+            goodAnimationCounter: 0
         });
         // this.setState
         this.setState({showModal: false});
@@ -96,7 +131,7 @@ class StoryBoxComponent extends Component {
                 <StoryContainer key={this.state.boxKey}>
                     <StoryLeftSider>
                         <StoryInputComponent 
-                            onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
+                            onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true, inputType: 'bad'})}
                             storyInputs={story.storyBadInputs}
                             isStoryPlaying={this.state.isStoryPlaying}
                         />
@@ -104,11 +139,12 @@ class StoryBoxComponent extends Component {
                     <StoryBodyComponent 
                         story={story} 
                         inputIndex={this.state.inputIndex}
-                        onOneAniFinished={() => this.onAnimationFinished()}
+                        inputType={this.state.inputType}
+                        onOneAniFinished={(type) => this.onAnimationFinished(type)}
                     />
                     <StoryRightSider>
                         <StoryInputComponent 
-                            onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true})}
+                            onStoryInputClicked={(index) => this.setState({inputIndex: index, isStoryPlaying: true, inputType: 'good'})}
                             storyInputs={story.storyGoodInputs}
                             isStoryPlaying={this.state.isStoryPlaying}
                         />
@@ -116,16 +152,16 @@ class StoryBoxComponent extends Component {
                     <Modal
                         centered
                         maskClosable={false}
-                        title="Turtle: I am dying. Can you please help me?"
+                        title={this.state.modalTitle}
                         visible={this.state.showModal}
                         footer={[
                             <Button key="submit" type="primary" onClick={this.handleOk.bind(this)}>
-                                Let's Do It!
+                                {this.state.modalOkText}
                             </Button>
                         ]}
                         onCancel={this.handleCancel.bind(this)}
                     >
-                        <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require('../static/story_end/Story1_Ending_sad.png')} alt="story end"></img></p>
+                        <p style={{display: "flex"}}><img className="img-fluid mb-0" style={{margin: '0 auto'}} src={require(`../static/story_end/${this.state.modalImg}`)} alt="story end"></img></p>
                     </Modal>
                 </StoryContainer>
             </div>
