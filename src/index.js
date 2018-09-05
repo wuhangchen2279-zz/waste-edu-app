@@ -66,6 +66,7 @@ ReactDOM.render(
                         <Route path="/habit-tracker" component={HabitTrackerDetail} />
                         <Route path="/story/:id" component={StoryBoxComponent} />
                         <Route path="/stories" component={StoriesGridComponent} />
+                        <Route path="/quiz" component={Quiz} />
                         <Route path="/" component={Home} />
                     </Switch>
                 </Content>

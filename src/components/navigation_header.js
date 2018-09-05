@@ -38,6 +38,9 @@ class NavigationHeader extends Component {
           <Menu.Item key="/habit-tracker">
             <NavMenuItem routeUrl="/habit-tracker" icon="tasks" label="Challenge" iconColor="#a597e7" />
           </Menu.Item>
+          <Menu.Item key="/quiz">
+            <NavMenuItem routeUrl="/quiz" icon="tasks" label="Quiz" iconColor="#a597e7" />
+          </Menu.Item>
         </Menu>
       </Header>
     );
