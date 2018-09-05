@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import 'font-awesome/css/font-awesome.min.css'
-import { faKey, faBookReader,faHome,faTasks,faUsers, faArrowCircleLeft, faArrowCircleRight  } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faBookReader,faHome,faTasks,faUsers, faArrowCircleLeft, faArrowCircleRight, faQuestionCircle  } from '@fortawesome/free-solid-svg-icons';
 
 import NavigationHeader from './components/navigation_header';
 import StoriesGridComponent from './containers/stories_grid';
@@ -20,6 +20,7 @@ import Home from './components/home';
 import WebFont from 'webfontloader';
 import { Layout } from 'antd';
 import HabitTrackerDetail from './containers/habit_tracker_detail';
+import Quiz from './components/quiz';
 
 //make use of redux thunk middleware
 const middleware = [ thunk ];
@@ -48,7 +49,8 @@ library.add(
     faBookReader,
     faHome,
     faTasks,
-    faUsers);
+    faUsers,
+    faQuestionCircle);
 
 
 //make use of ant design layout

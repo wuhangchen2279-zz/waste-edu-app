@@ -4,10 +4,12 @@ import {DragSource} from 'react-dnd';
 
 const itemSource = {
     beginDrag(props){
-        console.log('dragging');
         return props.item;
     },
     endDrag(props,monitor,component){
+        if(!monitor.didDrop()){
+            return;
+        }
         return props.handleDrop(props.item.id);
     }
     
@@ -20,20 +22,14 @@ function collect(connect,monitor){
         isDragging:monitor.isDragging(),
     }
 }
-class Quizitem extends Component {
+
+class QuizItem extends Component {
     render(){
         const{isDragging,connectDragSource,item} = this.props;
         return connectDragSource(
-            <div className="item">
-                <span>{item.name}</span>
-            </div>
+            <img style={{marginTop:60}} src={require(`../static/quiz_items/Quiz${item.id}.png`)} alt="quiz1" />
         )
-        // return (
-        //     <div className="item">
-        //         {this.props.item.name}
-        //     </div>
-        // );
     }
 }
 
-export default DragSource('item',itemSource,collect)(Quizitem);
+export default DragSource('item',itemSource,collect)(QuizItem);
